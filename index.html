@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Digital - Future of Marketing</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <span class="logo-text">Nexus</span>
+                <span class="logo-text-highlight">Digital</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="nav-actions">
+            <button id="darkModeToggle" class="dark-mode-toggle">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </button>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="swiper hero-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                    <div class="hero-content">
+                        <h1>Innovative Digital Solutions</h1>
+                        <p>Elevate your brand with cutting-edge marketing strategies</p>
+                        <a href="#contact" class="cta-button">Get Started</a>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80');">
+                    <div class="hero-content">
+                        <h1>Creative Marketing Excellence</h1>
+                        <p>Stand out in the digital landscape with unique campaigns</p>
+                        <a href="#services" class="cta-button">Our Services</a>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80');">
+                    <div class="hero-content">
+                        <h1>Results That Matter</h1>
+                        <p>Drive growth and achieve your business objectives</p>
+                        <a href="#portfolio" class="cta-button">View Our Work</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-preview">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Digital Marketing Team">
+                </div>
+                <div class="about-text">
+                    <h2>Transforming Digital Success</h2>
+                    <p>We're a dynamic team of digital innovators, combining creativity with data-driven strategies to elevate your brand's online presence. Our expertise spans across digital marketing, social media, and content creation.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 class="stat-number" data-count="15">0</h3>
+                                <p>Years of Excellence</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 class="stat-number" data-count="500">0</h3>
+                                <p>Success Stories</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 class="stat-number" data-count="50">0</h3>
+                                <p>Countries Reached</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="about.html" class="cta-button">Discover Our Story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Digital Strategy</h3>
+                <p>Comprehensive digital marketing strategies tailored to your business</p>
+                <ul class="service-features">
+                    <li>Market Analysis</li>
+                    <li>Competitor Research</li>
+                    <li>Strategy Development</li>
+                    <li>Performance Tracking</li>
+                </ul>
+                <a href="#" class="service-link">Learn More</a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-bullhorn"></i>
+                <h3>Social Media</h3>
+                <p>Engaging social media campaigns that build your brand</p>
+                <ul class="service-features">
+                    <li>Content Creation</li>
+                    <li>Community Management</li>
+                    <li>Paid Advertising</li>
+                    <li>Analytics & Reporting</li>
+                </ul>
+                <a href="#" class="service-link">Learn More</a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-search"></i>
+                <h3>SEO Optimization</h3>
+                <p>Improve your search rankings and drive organic traffic</p>
+                <ul class="service-features">
+                    <li>Keyword Research</li>
+                    <li>On-page SEO</li>
+                    <li>Technical SEO</li>
+                    <li>Link Building</li>
+                </ul>
+                <a href="#" class="service-link">Learn More</a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Content Creation</h3>
+                <p>Compelling content that resonates with your audience</p>
+                <ul class="service-features">
+                    <li>Blog Writing</li>
+                    <li>Video Production</li>
+                    <li>Infographics</li>
+                    <li>Email Marketing</li>
+                </ul>
+                <a href="#" class="service-link">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Preview Section -->
+    <section class="portfolio-preview" id="portfolio">
+        <h2>Featured Work</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="E-commerce Project">
+                <div class="portfolio-overlay">
+                    <h3>E-commerce Redesign</h3>
+                    <p>Complete website redesign for a leading fashion brand</p>
+                    <a href="portfolio.html" class="view-project">View Project</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Social Media Campaign">
+                <div class="portfolio-overlay">
+                    <h3>Viral Campaign</h3>
+                    <p>Social media campaign that reached 1M+ users</p>
+                    <a href="portfolio.html" class="view-project">View Project</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="Brand Identity">
+                <div class="portfolio-overlay">
+                    <h3>Brand Identity</h3>
+                    <p>Complete brand overhaul for a tech startup</p>
+                    <a href="portfolio.html" class="view-project">View Project</a>
+                </div>
+            </div>
+        </div>
+        <div class="view-all">
+            <a href="portfolio.html" class="cta-button">View All Projects</a>
+        </div>
+        <div class="engagement-stats">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 class="stat-number" data-count="10000">0</h3>
+                    <p>Active Clients</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 class="stat-number" data-count="250">0</h3>
+                    <p>Average Growth</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 class="stat-number" data-count="50">0</h3>
+                    <p>Countries Reached</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 class="stat-number" data-count="100">0</h3>
+                    <p>Awards Won</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Logo Section -->
+    <section class="brand-section">
+        <div class="container">
+            <h2>Trusted By Industry Leaders</h2>
+            <div class="brand-carousel">
+                <div class="brand-track">
+                    <!-- First set of logos -->
+                    <div class="brand-item">
+                        <img src="icons8-google-480.png" alt="Google Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-amazon-480.png" alt="Facebook Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-google-pay-240.png" alt="LinkedIn Ads">
+                    </div>
+                    <div class="brand-item"> 
+                        <img src="icons8-netflix-480.png" alt="Twitter Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-amazon-prime-480.png" alt="Instagram Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-physics-wallah-480.png" alt="TikTok Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-chatgpt-500.png" alt="Pinterest Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-udemy-480.png" alt="Snapchat Ads">
+                    </div>
+                    <!-- Duplicate set for infinite effect -->
+                    <div class="brand-item">
+                        <img src="icons8-google-480.png" alt="Google Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-amazon-480.png" alt="Facebook Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-google-pay-240.png" alt="LinkedIn Ads">
+                    </div>
+                    <div class="brand-item"> 
+                        <img src="icons8-netflix-480.png" alt="Twitter Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-amazon-prime-480.png" alt="Instagram Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-physics-wallah-480.png" alt="TikTok Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-chatgpt-500.png" alt="Pinterest Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-udemy-480.png" alt="Snapchat Ads">
+                    </div>
+                     <!-- Duplicate set for infinite effect -->
+                     <div class="brand-item">
+                        <img src="icons8-google-480.png" alt="Google Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-amazon-480.png" alt="Facebook Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-google-pay-240.png" alt="LinkedIn Ads">
+                    </div>
+                    <div class="brand-item"> 
+                        <img src="icons8-netflix-480.png" alt="Twitter Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-amazon-prime-480.png" alt="Instagram Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-physics-wallah-480.png" alt="TikTok Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-chatgpt-500.png" alt="Pinterest Ads">
+                    </div>
+                    <div class="brand-item">
+                        <img src="icons8-udemy-480.png" alt="Snapchat Ads">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Carousel Section -->
+    <section class="blog-section">
+        <h2>Latest Insights</h2>
+        <div class="swiper blog-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80" alt="Digital Marketing Trends">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> March 15, 2024</span>
+                                <span><i class="far fa-user"></i> John Doe</span>
+                            </div>
+                            <h3>Future of Digital Marketing</h3>
+                            <p>Exploring upcoming trends in digital marketing and how they'll shape the industry...</p>
+                            <a href="blog.html" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80" alt="AI in Marketing">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> March 12, 2024</span>
+                                <span><i class="far fa-user"></i> Jane Smith</span>
+                            </div>
+                            <h3>AI in Marketing</h3>
+                            <p>How artificial intelligence is transforming marketing strategies and customer engagement...</p>
+                            <a href="blog.html" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Social Media Marketing">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> March 10, 2024</span>
+                                <span><i class="far fa-user"></i> Mike Johnson</span>
+                            </div>
+                            <h3>Social Media Trends</h3>
+                            <p>Latest trends in social media marketing and how to leverage them for business growth...</p>
+                            <a href="blog.html" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Content Marketing">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> March 8, 2024</span>
+                                <span><i class="far fa-user"></i> Sarah Wilson</span>
+                            </div>
+                            <h3>Content Marketing Strategies</h3>
+                            <p>Effective content marketing strategies to engage your audience and drive conversions...</p>
+                            <a href="blog.html" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="SEO Optimization">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> March 5, 2024</span>
+                                <span><i class="far fa-user"></i> David Brown</span>
+                            </div>
+                            <h3>SEO Best Practices</h3>
+                            <p>Latest SEO techniques and best practices to improve your website's visibility...</p>
+                            <a href="blog.html" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="view-all">
+            <a href="blog.html" class="cta-button">View All Posts</a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="swiper testimonials-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <i class="fas fa-quote-left quote-icon"></i>
+                                <p>"Nexus Digital transformed our online presence completely. Their strategic approach and creative solutions helped us achieve remarkable growth in our digital marketing efforts."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="John Anderson">
+                                <div class="author-info">
+                                    <h4>John Anderson</h4>
+                                    <p>CEO, TechStart Inc.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <i class="fas fa-quote-left quote-icon"></i>
+                                <p>"Working with Nexus Digital has been a game-changer for our brand. Their team's expertise in social media marketing helped us reach new heights in customer engagement."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1976&q=80" alt="Sarah Mitchell">
+                                <div class="author-info">
+                                    <h4>Sarah Mitchell</h4>
+                                    <p>Marketing Director, Fashion Forward</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <i class="fas fa-quote-left quote-icon"></i>
+                                <p>"The SEO optimization strategies implemented by Nexus Digital have significantly improved our search rankings. Their data-driven approach delivers real results."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Michael Chen">
+                                <div class="author-info">
+                                    <h4>Michael Chen</h4>
+                                    <p>Founder, GrowthLabs</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Culture Section -->
+    <section class="office-culture-section">
+        <div class="container">
+            <h2>Our Work Culture</h2>
+            <div class="swiper office-culture-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="culture-card">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team Collaboration">
+                            <div class="culture-overlay">
+                                <h3>Team Collaboration</h3>
+                                <p>Working together to achieve excellence</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="culture-card">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Office Celebration">
+                            <div class="culture-overlay">
+                                <h3>Celebrating Success</h3>
+                                <p>Recognizing achievements and milestones</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="culture-card">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Modern Workspace">
+                            <div class="culture-overlay">
+                                <h3>Modern Workspace</h3>
+                                <p>Inspiring environment for creativity</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="culture-card">
+                            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Team Building">
+                            <div class="culture-overlay">
+                                <h3>Team Building</h3>
+                                <p>Strengthening bonds and collaboration</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="culture-card">
+                            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="Innovation Hub">
+                            <div class="culture-overlay">
+                                <h3>Innovation Hub</h3>
+                                <p>Where ideas come to life</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-waves">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="currentColor" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+        
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-grid">
+                    <!-- Company Info -->
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <span class="logo-text">Nexus</span>
+                            <span class="logo-text-highlight">Digital</span>
+                        </div>
+                        <p class="brand-description">Transforming businesses through innovative digital solutions and strategic marketing approaches.</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Instagram" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="YouTube" class="social-link"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-menu">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="portfolio.html">Portfolio</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Services -->
+                    <div class="footer-links">
+                        <h4>Our Services</h4>
+                        <ul class="footer-menu">
+                            <li><a href="#">Digital Strategy</a></li>
+                            <li><a href="#">Social Media Marketing</a></li>
+                            <li><a href="#">SEO Optimization</a></li>
+                            <li><a href="#">Content Creation</a></li>
+                            <li><a href="#">Web Development</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="footer-contact">
+                        <h4>Contact Us</h4>
+                        <ul class="contact-list">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>123 Business Avenue, Suite 100<br>New York, NY 10001</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span>+1 (234) 567-8900</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span>info@nexusdigital.com</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p class="copyright">&copy; 2024 Nexus Digital. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
