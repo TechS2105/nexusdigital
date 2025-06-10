@@ -37,137 +37,6 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        .team-section {
-            padding: 5rem 5%;
-            background: var(--light-bg);
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .team-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--text-color);
-            position: relative;
-        }
-
-        .team-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-
-        .team-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            width: 100%;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 1rem 0;
-        }
-
-        .team-member {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .member-image {
-            width: 100%;
-            height: 350px;
-            position: relative;
-            overflow: hidden;
-            background-color: #f5f5f5;
-        }
-
-        .member-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-            display: block;
-        }
-
-        .team-member:hover .member-image img {
-            transform: scale(1.1);
-        }
-
-        .member-info {
-            padding: 2rem;
-            text-align: center;
-            background: white;
-            position: relative;
-        }
-
-        .member-info h3 {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .member-info .position {
-            color: var(--secondary-color);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .member-info .bio {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .social-links a {
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        .social-links a:hover {
-            color: white;
-            background: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
         .company-values-modern {
             background: #f7fafd;
             padding: 5rem 0 5rem 0;
@@ -242,7 +111,7 @@
         @media (max-width: 1100px) {
             .values-cards-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+            gap: 2rem;
             }
         }
         @media (max-width: 700px) {
@@ -639,15 +508,6 @@
                 flex: 0 0 calc(50% - 1rem);
             }
 
-            .team-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1.5rem;
-            }
-
-            .member-image {
-                height: 300px;
-            }
-
             .carousel-controls {
                 display: none;
             }
@@ -673,121 +533,6 @@
 
             .stat-item h3 {
                 font-size: 3rem;
-            }
-        }
-
-        .team-section-modern {
-            background: #e9eef2;
-            padding: 4rem 0 4rem 0;
-        }
-        .team-grid-modern {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 2.5rem 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        .team-card {
-            display: flex;
-            align-items: center;
-            background: #f6f8fa;
-            border-radius: 18px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-            padding: 2.5rem 2rem;
-            min-height: 320px;
-            position: relative;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
-        }
-        .team-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .team-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 2rem;
-            background: #dbe3ea;
-            flex-shrink: 0;
-            border: 4px solid #e9eef2;
-        }
-        .team-info {
-            flex: 1;
-        }
-        .team-info h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 0 0.5rem 0;
-            color: #222;
-        }
-        .team-role {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 1.2rem;
-        }
-        .team-social {
-            display: flex;
-            gap: 1rem;
-        }
-        .team-social a {
-            color: #222;
-            background: #e9eef2;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            transition: background 0.2s, color 0.2s;
-        }
-        .team-social a:hover {
-            background: #222;
-            color: #fff;
-        }
-        @media (max-width: 900px) {
-            .team-grid-modern {
-                grid-template-columns: 1fr;
-                grid-template-rows: none;
-            }
-            .team-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 2rem 1rem;
-            }
-            .team-img {
-                margin: 0 0 1.2rem 0;
-            }
-        }
-        .team-modern-heading {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 0 auto 2.5rem auto;
-            color: #1a1a1a;
-            letter-spacing: -1px;
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-        }
-        .team-modern-heading::after {
-            content: '';
-            display: block;
-            margin: 1.1rem auto 0 auto;
-            width: 70px;
-            height: 4px;
-            background: #3a7afe;
-            border-radius: 2px;
-        }
-        @media (max-width: 900px) {
-            .team-modern-heading {
-                font-size: 2rem;
-                margin-bottom: 2rem;
             }
         }
 
@@ -881,59 +626,84 @@
             }
         }
 
-        .work-culture-section {
-            background: #fff;
-            padding: 4.5rem 0 4.5rem 0;
-        }
-        .work-culture-heading {
-            text-align: center;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #3a7afe;
-            margin-bottom: 2.5rem;
-            letter-spacing: -0.5px;
-        }
-        .work-culture-carousel-container {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        .work-culture-carousel.infinite {
+        .google-review-section {
+            background: #f7fafd;
+            padding: 2.5rem 0 2.5rem 0;
             display: flex;
-            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+        }
+        .google-review-carousel-container {
+            max-width: 540px;
+            width: 100%;
+            position: relative;
+        }
+        .google-review-carousel {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(.4,0,.2,1);
             will-change: transform;
-            animation: work-culture-infinite 20s linear infinite;
         }
-        @keyframes work-culture-infinite {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .work-culture-slide {
+        .google-review-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(58,122,254,0.10);
             min-width: 100%;
-            flex: 0 0 100%;
+            max-width: 100%;
+            width: 100%;
+            padding: 2.2rem 2rem 1.7rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .google-review-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 4px 24px rgba(58,122,254,0.10);
-            background: #f7fafd;
+            gap: 0.7rem;
+            margin-bottom: 1.1rem;
         }
-        .work-culture-slide img {
-            width: 100%;
-            height: 340px;
-            object-fit: cover;
-            border-radius: 18px;
+        .google-logo {
+            width: 32px;
+            height: 32px;
             display: block;
         }
-        .work-culture-dots {
+        .google-review-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #4285f4;
+            letter-spacing: 0.2px;
+        }
+        .google-review-content {
+            margin-bottom: 1.2rem;
+        }
+        .google-review-text {
+            font-size: 1.13rem;
+            color: #222;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        .google-review-footer {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            justify-content: center;
+        }
+        .google-review-stars {
+            color: #fbbc04;
+            font-size: 1.15rem;
+        }
+        .google-reviewer {
+            color: #555;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .google-review-dots {
             display: flex;
             justify-content: center;
             gap: 0.7rem;
-            margin-top: 1.5rem;
+            margin-top: 1.3rem;
         }
-        .work-culture-dot {
+        .google-review-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
@@ -941,16 +711,118 @@
             cursor: pointer;
             transition: background 0.2s, transform 0.2s;
         }
-        .work-culture-dot.active {
+        .google-review-dot.active {
             background: #3a7afe;
             transform: scale(1.2);
         }
-        @media (max-width: 700px) {
-            .work-culture-slide img {
-                height: 180px;
+        @media (max-width: 600px) {
+            .google-review-card {
+                padding: 1.2rem 0.7rem 1.2rem 0.7rem;
             }
-            .work-culture-carousel-container {
-                padding: 0;
+            .google-review-section {
+                padding: 1.2rem 0 1.2rem 0;
+            }
+        }
+
+        .google-review-infinite-section {
+            background: #f7fafd;
+            padding: 2.7rem 0 2.7rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+        .google-review-infinite-carousel-outer {
+            width: 100%;
+            max-width: 1200px;
+            overflow: hidden;
+            padding: 0 1.5rem;
+        }
+        .google-review-infinite-carousel {
+            display: flex;
+            align-items: stretch;
+            gap: 2.2rem;
+            animation: google-review-infinite-scroll 18s linear infinite;
+            will-change: transform;
+        }
+        @keyframes google-review-infinite-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .google-review-infinite-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(58,122,254,0.10);
+            min-width: 340px;
+            max-width: 340px;
+            width: 340px;
+            padding: 2.2rem 1.5rem 1.7rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        .google-review-header {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 1.1rem;
+        }
+        .google-logo {
+            width: 32px;
+            height: 32px;
+            display: block;
+        }
+        .google-review-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #4285f4;
+            letter-spacing: 0.2px;
+        }
+        .google-review-content {
+            margin-bottom: 1.2rem;
+        }
+        .google-review-text {
+            font-size: 1.13rem;
+            color: #222;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        .google-review-footer {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            justify-content: center;
+        }
+        .google-review-stars {
+            color: #fbbc04;
+            font-size: 1.15rem;
+        }
+        .google-reviewer {
+            color: #555;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        @media (max-width: 900px) {
+            .google-review-infinite-card {
+                min-width: 80vw;
+                max-width: 80vw;
+                width: 80vw;
+            }
+            .google-review-infinite-carousel-outer {
+                padding: 0 0.5rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .google-review-infinite-section {
+                padding: 1.2rem 0 1.2rem 0;
+            }
+            .google-review-infinite-card {
+                min-width: 96vw;
+                max-width: 96vw;
+                width: 96vw;
+                padding: 1.2rem 0.5rem 1.2rem 0.5rem;
             }
         }
     </style>
@@ -1059,88 +931,37 @@
       <div class="values-header">
         <h2>Our Core Values</h2>
         <p class="values-subtitle">What drives us every day at Nexus Digital</p>
-      </div>
+                    </div>
       <div class="values-cards-grid">
         <div class="value-card-modern">
           <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
           <div class="value-content">
             <h3>Innovation</h3>
             <p>We constantly push boundaries and explore new possibilities to deliver creative solutions.</p>
-          </div>
-        </div>
+                </div>
+            </div>
         <div class="value-card-modern">
           <div class="value-icon"><i class="fas fa-users"></i></div>
           <div class="value-content">
             <h3>Collaboration</h3>
             <p>We believe in teamwork and open communication to achieve extraordinary results together.</p>
-          </div>
-        </div>
+                    </div>
+                </div>
         <div class="value-card-modern">
           <div class="value-icon"><i class="fas fa-chart-line"></i></div>
           <div class="value-content">
             <h3>Excellence</h3>
             <p>We are committed to delivering the highest quality in everything we do, every time.</p>
-          </div>
-        </div>
+            </div>
+                    </div>
         <div class="value-card-modern">
           <div class="value-icon"><i class="fas fa-heart"></i></div>
           <div class="value-content">
             <h3>Passion</h3>
             <p>We love what we do and bring enthusiasm and energy to every project.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Team Section (Modern Grid) -->
-    <section class="team-section-modern">
-        <h2 class="team-modern-heading">Meet Our Team</h2>
-        <div class="team-grid-modern">
-            <div class="team-card">
-                <img class="team-img" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Svetoslav Simov">
-                <div class="team-info">
-                    <h3>Svetoslav Simov</h3>
-                    <p class="team-role">Founder &amp; CEO</p>
-                    <div class="team-social">
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    </div>
                 </div>
             </div>
-            <div class="team-card">
-                <img class="team-img" src="https://randomuser.me/api/portraits/men/44.jpg" alt="Plamen Motev">
-                <div class="team-info">
-                    <h3>Plamen Motev</h3>
-                    <p class="team-role">Creative Type Director</p>
-                    <div class="team-social">
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     </div>
-                </div>
-            </div>
-            <div class="team-card">
-                <img class="team-img" src="https://randomuser.me/api/portraits/women/65.jpg" alt="Maria Simova">
-                <div class="team-info">
-                    <h3>Maria Simova</h3>
-                    <p class="team-role">Co-founder &amp; Type Designer</p>
-                    <div class="team-social">
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="team-card">
-                <img class="team-img" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Viktoria Usmanova">
-                <div class="team-info">
-                    <h3>Viktoria Usmanova</h3>
-                    <p class="team-role">Type Director</p>
-                    <div class="team-social">
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Brand Logo Carousel Section -->
@@ -1170,29 +991,131 @@
            <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></div>
            <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple"></div>
 
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- Office Work Culture Carousel Section -->
-    <section class="work-culture-section">
-      <h2 class="work-culture-heading">Our Office Work Culture</h2>
-      <div class="work-culture-carousel-container">
-        <div class="work-culture-carousel infinite" id="workCultureCarousel">
-          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80" alt="Team Collaboration"></div>
-          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80" alt="Office Meeting"></div>
-          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Creative Workspace"></div>
-          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1519241047957-be31d7379a5d?auto=format&fit=crop&w=800&q=80" alt="Team Celebration"></div>
-          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" alt="Brainstorming"></div>
-          <!-- Duplicate slides for infinite effect -->
-          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80" alt="Team Collaboration"></div>
-          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80" alt="Office Meeting"></div>
-          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Creative Workspace"></div>
-          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1519241047957-be31d7379a5d?auto=format&fit=crop&w=800&q=80" alt="Team Celebration"></div>
-          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" alt="Brainstorming"></div>
+    <!-- Google Review Infinite Carousel Section -->
+    <section class="google-review-infinite-section">
+      <div class="google-review-infinite-carousel-outer">
+        <div class="google-review-infinite-carousel">
+          <div class="google-review-infinite-card">
+            <div class="google-review-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png" alt="Google Logo" class="google-logo">
+              <span class="google-review-title">Google Reviews</span>
+            </div>
+            <div class="google-review-content">
+              <p class="google-review-text">"Nexus Digital transformed our online presence! Their team is creative, responsive, and truly cares about results. Highly recommended!"</p>
+            </div>
+            <div class="google-review-footer">
+              <div class="google-review-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+              <span class="google-reviewer">— Alex Johnson</span>
+            </div>
+          </div>
+          <div class="google-review-infinite-card">
+            <div class="google-review-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png" alt="Google Logo" class="google-logo">
+              <span class="google-review-title">Google Reviews</span>
+            </div>
+            <div class="google-review-content">
+              <p class="google-review-text">"Excellent service and great results! The Nexus Digital team exceeded our expectations."</p>
+            </div>
+            <div class="google-review-footer">
+              <div class="google-review-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="google-reviewer">— Priya Sharma</span>
+            </div>
+          </div>
+          <div class="google-review-infinite-card">
+            <div class="google-review-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png" alt="Google Logo" class="google-logo">
+              <span class="google-review-title">Google Reviews</span>
+            </div>
+            <div class="google-review-content">
+              <p class="google-review-text">"Professional, innovative, and always on time. Highly recommend Nexus Digital for any business!"</p>
+            </div>
+            <div class="google-review-footer">
+              <div class="google-review-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="google-reviewer">— Michael Lee</span>
+            </div>
+          </div>
+          <!-- Repeat for infinite effect -->
+          <div class="google-review-infinite-card">
+            <div class="google-review-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png" alt="Google Logo" class="google-logo">
+              <span class="google-review-title">Google Reviews</span>
+            </div>
+            <div class="google-review-content">
+              <p class="google-review-text">"Nexus Digital transformed our online presence! Their team is creative, responsive, and truly cares about results. Highly recommended!"</p>
+            </div>
+            <div class="google-review-footer">
+              <div class="google-review-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="google-reviewer">— Alex Johnson</span>
+            </div>
+          </div>
+          <div class="google-review-infinite-card">
+            <div class="google-review-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png" alt="Google Logo" class="google-logo">
+              <span class="google-review-title">Google Reviews</span>
+            </div>
+            <div class="google-review-content">
+              <p class="google-review-text">"Excellent service and great results! The Nexus Digital team exceeded our expectations."</p>
+            </div>
+            <div class="google-review-footer">
+              <div class="google-review-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="google-reviewer">— Priya Sharma</span>
+            </div>
+          </div>
+          <div class="google-review-infinite-card">
+            <div class="google-review-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png" alt="Google Logo" class="google-logo">
+              <span class="google-review-title">Google Reviews</span>
+            </div>
+            <div class="google-review-content">
+              <p class="google-review-text">"Professional, innovative, and always on time. Highly recommend Nexus Digital for any business!"</p>
+            </div>
+            <div class="google-review-footer">
+              <div class="google-review-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="google-reviewer">— Michael Lee</span>
+            </div>
+          </div>
+            </div>
         </div>
-        <div class="work-culture-dots" id="workCultureDots"></div>
-      </div>
     </section>
 
     <!-- Footer -->
@@ -1338,41 +1261,23 @@
             statsObserver.observe(document.querySelector('.about-stats'));
         });
 
-        // Team section scroll animation
+        // Google Review Carousel Logic
         document.addEventListener('DOMContentLoaded', function() {
-            const teamCards = document.querySelectorAll('.team-card');
-            if (teamCards.length) {
-                const observer = new IntersectionObserver((entries, obs) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            obs.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.2 });
-                teamCards.forEach(card => observer.observe(card));
-            }
-        });
-
-        // Office Work Culture Infinite Carousel Logic
-        document.addEventListener('DOMContentLoaded', function() {
-            const carousel = document.getElementById('workCultureCarousel');
-            const slides = carousel.querySelectorAll('.work-culture-slide');
-            const dotsContainer = document.getElementById('workCultureDots');
-            const slideCount = slides.length / 2; // because we duplicated slides for infinite effect
+            const carousel = document.getElementById('googleReviewCarousel');
+            const cards = carousel.querySelectorAll('.google-review-card');
+            const dotsContainer = document.getElementById('googleReviewDots');
             let current = 0;
             let interval;
             function goToSlide(idx) {
-                current = (idx + slideCount) % slideCount;
-                carousel.style.transition = 'transform 0.6s cubic-bezier(.4,0,.2,1)';
+                current = (idx + cards.length) % cards.length;
                 carousel.style.transform = `translateX(-${current * 100}%)`;
                 updateDots();
             }
             function updateDots() {
                 dotsContainer.innerHTML = '';
-                for (let i = 0; i < slideCount; i++) {
+                for (let i = 0; i < cards.length; i++) {
                     const dot = document.createElement('span');
-                    dot.className = 'work-culture-dot' + (i === current ? ' active' : '');
+                    dot.className = 'google-review-dot' + (i === current ? ' active' : '');
                     dot.addEventListener('click', () => {
                         goToSlide(i);
                         resetAuto();
@@ -1380,31 +1285,10 @@
                     dotsContainer.appendChild(dot);
                 }
             }
-            function nextSlide() {
-                if (current === slideCount - 1) {
-                    // Jump instantly to the duplicate set, then animate to the next
-                    carousel.style.transition = 'none';
-                    carousel.style.transform = `translateX(-${slideCount * 100}%)`;
-                    setTimeout(() => {
-                        carousel.style.transition = 'transform 0.6s cubic-bezier(.4,0,.2,1)';
-                        current = 0;
-                        carousel.style.transform = `translateX(-${current * 100}%)`;
-                        updateDots();
-                    }, 20);
-                } else {
-                    goToSlide(current + 1);
-                }
-            }
-            function startAuto() {
-                interval = setInterval(nextSlide, 3500);
-            }
-            function stopAuto() {
-                clearInterval(interval);
-            }
-            function resetAuto() {
-                stopAuto();
-                startAuto();
-            }
+            function nextSlide() { goToSlide(current + 1); }
+            function startAuto() { interval = setInterval(nextSlide, 4000); }
+            function stopAuto() { clearInterval(interval); }
+            function resetAuto() { stopAuto(); startAuto(); }
             carousel.addEventListener('mouseenter', stopAuto);
             carousel.addEventListener('mouseleave', startAuto);
             goToSlide(0);
