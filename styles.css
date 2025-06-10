@@ -1917,20 +1917,36 @@ body {
 
 /* Dark Mode Styles */
 [data-theme="dark"] .testimonial-card {
-    background: transparent;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 [data-theme="dark"] .testimonial-content p {
-    color: var(--dark-text);
+    color: #ffffff;
 }
 
 [data-theme="dark"] .author-info h4 {
-    color: var(--dark-text);
+    color: #007bff;
 }
 
 [data-theme="dark"] .author-info p {
-    color: var(--dark-text-light);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] .quote-icon {
+    color: #007bff;
+    opacity: 0.3;
+}
+
+[data-theme="dark"] #client-testimonials .swiper-button-next,
+[data-theme="dark"] #client-testimonials .swiper-button-prev {
+    color: #007bff;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+[data-theme="dark"] #client-testimonials .swiper-pagination-bullet-active {
+    background: #007bff;
 }
 
 /* Responsive Styles */
