@@ -39,85 +39,919 @@
 
         .team-section {
             padding: 5rem 5%;
+            background: var(--light-bg);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .team-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .team-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
         }
 
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
+            gap: 2rem;
+            padding: 1rem 0;
         }
 
         .team-member {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .team-member:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
         }
 
         .member-image {
             width: 100%;
-            height: 300px;
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+            background-color: #f5f5f5;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
         }
 
         .member-info {
-            padding: 1.5rem;
+            padding: 2rem;
             text-align: center;
+            background: white;
+            position: relative;
         }
 
         .member-info h3 {
             color: var(--primary-color);
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
-        .member-info p {
-            color: #666;
+        .member-info .position {
+            color: var(--secondary-color);
+            font-size: 1rem;
             margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .member-info .bio {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
             gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .social-links a {
             color: var(--secondary-color);
             font-size: 1.2rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.05);
         }
 
         .social-links a:hover {
-            color: var(--accent-color);
+            color: white;
+            background: var(--primary-color);
+            transform: translateY(-3px);
         }
 
-        .company-values {
-            padding: 5rem 5%;
-            background: var(--light-bg);
+        .company-values-modern {
+            background: #f7fafd;
+            padding: 5rem 0 5rem 0;
         }
-
-        .values-grid {
+        .values-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .values-header h2 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+        .values-subtitle {
+            color: #4a6fa1;
+            font-size: 1.1rem;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+        .values-cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .value-card-modern {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(58,122,254,0.07);
+            padding: 2.5rem 1.5rem 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: box-shadow 0.25s, transform 0.25s;
+            position: relative;
+        }
+        .value-card-modern:hover {
+            box-shadow: 0 8px 32px rgba(58,122,254,0.13);
+            transform: translateY(-8px) scale(1.03);
+        }
+        .value-icon {
+            font-size: 2.8rem;
+            color: #3a7afe;
+            margin-bottom: 1.2rem;
+            background: #e9eefb;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(58,122,254,0.07);
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .value-content h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.6rem;
+        }
+        .value-content p {
+            color: #4a6fa1;
+            font-size: 1rem;
+            opacity: 0.92;
+            margin: 0;
+        }
+        @media (max-width: 1100px) {
+            .values-cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+        @media (max-width: 700px) {
+            .values-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .company-values-modern {
+                padding: 3rem 0 3rem 0;
+            }
         }
 
-        .value-card {
+        .about-content {
+            padding: 8rem 0;
+            background: var(--light-bg);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            width: 100%;
+        }
+
+        .about-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+        }
+
+        /* Main Content Section */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            width: 100%;
+        }
+
+        .content-header {
+            text-align: center;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .section-tag:hover::before {
+            left: 100%;
+        }
+
+        .content-header h2 {
+            font-size: 3.5rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            position: relative;
+            display: inline-block;
+        }
+
+        .content-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .content-header:hover h2::after {
+            width: 120px;
+        }
+
+        .content-header p {
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Image and Features Section */
+        .content-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            width: 100%;
+        }
+
+        .image-section {
+            width: 100%;
+            max-width: 1000px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 600px;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .main-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .floating-image {
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .floating-image.top-right {
+            top: -30px;
+            right: -30px;
+            transform: rotate(5deg);
+        }
+
+        .floating-image.bottom-left {
+            bottom: -30px;
+            left: -30px;
+            transform: rotate(-5deg);
+        }
+
+        .floating-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .floating-image:hover {
+            transform: rotate(0) scale(1.05);
+        }
+
+        .floating-image:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Features Section */
+        .features-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .feature-card {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
             padding: 2rem;
         }
 
-        .value-card i {
-            font-size: 3rem;
-            color: var(--secondary-color);
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover i {
+            transform: scale(1.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-color);
             margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-color);
+            opacity: 0.8;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1000px;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-item {
+            flex: 1;
+            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-item:hover::before {
+            opacity: 1;
+        }
+
+        .stat-item h3 {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .stat-item p {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .content-body {
+                gap: 3rem;
+            }
+
+            .main-image {
+                height: 500px;
+            }
+
+            .floating-image {
+                width: 250px;
+                height: 170px;
+            }
+
+            .stats-section {
+                flex-wrap: wrap;
+            }
+
+            .stat-item {
+                flex: 0 0 calc(50% - 1rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                padding: 4rem 0;
+            }
+
+            .content-body {
+                gap: 3rem;
+            }
+
+            .main-image {
+                height: 500px;
+            }
+
+            .floating-image {
+                width: 250px;
+                height: 170px;
+            }
+
+            .content-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .stats-section {
+                flex-wrap: wrap;
+            }
+
+            .stat-item {
+                flex: 0 0 calc(50% - 1rem);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .member-image {
+                height: 300px;
+            }
+
+            .carousel-controls {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .content-header h2 {
+                font-size: 2rem;
+            }
+
+            .section-tag {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .main-image {
+                height: 300px;
+            }
+
+            .stat-item h3 {
+                font-size: 3rem;
+            }
+        }
+
+        .team-section-modern {
+            background: #e9eef2;
+            padding: 4rem 0 4rem 0;
+        }
+        .team-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 2.5rem 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .team-card {
+            display: flex;
+            align-items: center;
+            background: #f6f8fa;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            padding: 2.5rem 2rem;
+            min-height: 320px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        .team-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .team-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 2rem;
+            background: #dbe3ea;
+            flex-shrink: 0;
+            border: 4px solid #e9eef2;
+        }
+        .team-info {
+            flex: 1;
+        }
+        .team-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            color: #222;
+        }
+        .team-role {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1.2rem;
+        }
+        .team-social {
+            display: flex;
+            gap: 1rem;
+        }
+        .team-social a {
+            color: #222;
+            background: #e9eef2;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        .team-social a:hover {
+            background: #222;
+            color: #fff;
+        }
+        @media (max-width: 900px) {
+            .team-grid-modern {
+                grid-template-columns: 1fr;
+                grid-template-rows: none;
+            }
+            .team-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+            .team-img {
+                margin: 0 0 1.2rem 0;
+            }
+        }
+        .team-modern-heading {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 auto 2.5rem auto;
+            color: #1a1a1a;
+            letter-spacing: -1px;
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+        }
+        .team-modern-heading::after {
+            content: '';
+            display: block;
+            margin: 1.1rem auto 0 auto;
+            width: 70px;
+            height: 4px;
+            background: #3a7afe;
+            border-radius: 2px;
+        }
+        @media (max-width: 900px) {
+            .team-modern-heading {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        .brand-carousel-section {
+            background: #f4f7fa;
+            padding: 3.5rem 0 3.5rem 0;
+            margin-bottom: 2rem;
+        }
+        .brand-carousel-heading {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 2.2rem;
+            letter-spacing: -0.5px;
+        }
+        .brand-carousel-outer {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .brand-carousel-track {
+            display: flex;
+            align-items: center;
+            gap: 3.5rem;
+            animation: brand-carousel-scroll 15s linear infinite;
+            will-change: transform;
+            white-space: nowrap;
+        }
+        .brand-logo {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            min-width: 120px;
+            padding: 0 0.5rem;
+            opacity: 0.85;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .brand-logo img {
+            max-height: 48px;
+            max-width: 110px;
+            filter: contrast(1.1);
+            transition: filter 0.2s, transform 0.2s;
+        }
+        .brand-logo:hover {
+            opacity: 1;
+            transform: scale(1.08);
+        }
+        .brand-logo:hover img {
+            filter: contrast(1.2) drop-shadow(0 2px 8px rgba(58,122,254,0.08));
+        }
+        @keyframes brand-carousel-scroll {
+            from { transform: translateX(0%); }
+            to { transform: translateX(-100%); }
+        }
+        @media (max-width: 900px) {
+            .brand-carousel-track {
+                gap: 2.2rem;
+            }
+            .brand-logo {
+                min-width: 90px;
+                height: 44px;
+            }
+            .brand-logo img {
+                max-height: 32px;
+                max-width: 70px;
+            }
+        }
+        @media (max-width: 600px) {
+            .brand-carousel-section {
+                padding: 2rem 0 2rem 0;
+            }
+            .brand-carousel-heading {
+                font-size: 1.05rem;
+                margin-bottom: 1.2rem;
+            }
+            .brand-carousel-track {
+                gap: 1.2rem;
+            }
+            .brand-logo {
+                min-width: 60px;
+                height: 32px;
+            }
+            .brand-logo img {
+                max-height: 20px;
+                max-width: 40px;
+            }
+        }
+
+        .work-culture-section {
+            background: #fff;
+            padding: 4.5rem 0 4.5rem 0;
+        }
+        .work-culture-heading {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #3a7afe;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.5px;
+        }
+        .work-culture-carousel-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .work-culture-carousel.infinite {
+            display: flex;
+            gap: 2rem;
+            will-change: transform;
+            animation: work-culture-infinite 20s linear infinite;
+        }
+        @keyframes work-culture-infinite {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .work-culture-slide {
+            min-width: 100%;
+            flex: 0 0 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(58,122,254,0.10);
+            background: #f7fafd;
+        }
+        .work-culture-slide img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+        }
+        .work-culture-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.7rem;
+            margin-top: 1.5rem;
+        }
+        .work-culture-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e0e7ef;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .work-culture-dot.active {
+            background: #3a7afe;
+            transform: scale(1.2);
+        }
+        @media (max-width: 700px) {
+            .work-culture-slide img {
+                height: 180px;
+            }
+            .work-culture-carousel-container {
+                padding: 0;
+            }
         }
     </style>
 </head>
@@ -156,55 +990,64 @@
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section class="team-section">
-        <h2>Meet Our Team</h2>
-        <div class="team-grid">
-            <div class="team-member">
-                <img src="https://via.placeholder.com/400x300" alt="John Doe" class="member-image">
-                <div class="member-info">
-                    <h3>John Doe</h3>
-                    <p>CEO & Founder</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
+    <!-- About Content Section -->
+    <section class="about-content">
+        <div class="container">
+            <div class="about-grid">
+                <!-- Main Content -->
+                <div class="main-content">
+                    <div class="content-header">
+                        <span class="section-tag">About Us</span>
+                        <h2>Transforming Ideas into Digital Reality</h2>
+                        <p>At Nexus Digital, we're more than just a digital agency. We're a team of passionate innovators, creative thinkers, and strategic problem-solvers dedicated to helping businesses thrive in the digital age.</p>
                     </div>
-                </div>
-            </div>
-            <div class="team-member">
-                <img src="https://via.placeholder.com/400x300" alt="Jane Smith" class="member-image">
-                <div class="member-info">
-                    <h3>Jane Smith</h3>
-                    <p>Creative Director</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-dribbble"></i></a>
+
+                    <div class="content-body">
+                        <div class="image-section">
+                            <div class="main-image">
+                                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team Collaboration">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <div class="floating-image top-right">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Digital Strategy">
+                            </div>
+                            <div class="floating-image bottom-left">
+                                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team Meeting">
+                            </div>
+                        </div>
+
+                        <div class="features-section">
+                            <div class="feature-card">
+                                <i class="fas fa-lightbulb"></i>
+                                <h3>Innovative Solutions</h3>
+                                <p>Pushing boundaries with cutting-edge digital strategies and creative solutions.</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-users"></i>
+                                <h3>Expert Team</h3>
+                                <p>Skilled professionals with years of experience in digital transformation.</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-chart-line"></i>
+                                <h3>Proven Results</h3>
+                                <p>Delivering measurable success and ROI for our clients consistently.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="team-member">
-                <img src="https://via.placeholder.com/400x300" alt="Mike Johnson" class="member-image">
-                <div class="member-info">
-                    <h3>Mike Johnson</h3>
-                    <p>Lead Developer</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-stack-overflow"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="team-member">
-                <img src="https://via.placeholder.com/400x300" alt="Sarah Williams" class="member-image">
-                <div class="member-info">
-                    <h3>Sarah Williams</h3>
-                    <p>Marketing Strategist</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+
+                    <div class="stats-section">
+                        <div class="stat-item">
+                            <h3>150+</h3>
+                            <p>Happy Clients</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>250+</h3>
+                            <p>Projects</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>98%</h3>
+                            <p>Success Rate</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -212,30 +1055,144 @@
     </section>
 
     <!-- Company Values Section -->
-    <section class="company-values">
-        <h2>Our Values</h2>
-        <div class="values-grid">
-            <div class="value-card">
-                <i class="fas fa-lightbulb"></i>
-                <h3>Innovation</h3>
-                <p>Constantly pushing boundaries and exploring new possibilities</p>
+    <section class="company-values-modern">
+      <div class="values-header">
+        <h2>Our Core Values</h2>
+        <p class="values-subtitle">What drives us every day at Nexus Digital</p>
+      </div>
+      <div class="values-cards-grid">
+        <div class="value-card-modern">
+          <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+          <div class="value-content">
+            <h3>Innovation</h3>
+            <p>We constantly push boundaries and explore new possibilities to deliver creative solutions.</p>
+          </div>
+        </div>
+        <div class="value-card-modern">
+          <div class="value-icon"><i class="fas fa-users"></i></div>
+          <div class="value-content">
+            <h3>Collaboration</h3>
+            <p>We believe in teamwork and open communication to achieve extraordinary results together.</p>
+          </div>
+        </div>
+        <div class="value-card-modern">
+          <div class="value-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="value-content">
+            <h3>Excellence</h3>
+            <p>We are committed to delivering the highest quality in everything we do, every time.</p>
+          </div>
+        </div>
+        <div class="value-card-modern">
+          <div class="value-icon"><i class="fas fa-heart"></i></div>
+          <div class="value-content">
+            <h3>Passion</h3>
+            <p>We love what we do and bring enthusiasm and energy to every project.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section (Modern Grid) -->
+    <section class="team-section-modern">
+        <h2 class="team-modern-heading">Meet Our Team</h2>
+        <div class="team-grid-modern">
+            <div class="team-card">
+                <img class="team-img" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Svetoslav Simov">
+                <div class="team-info">
+                    <h3>Svetoslav Simov</h3>
+                    <p class="team-role">Founder &amp; CEO</p>
+                    <div class="team-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="value-card">
-                <i class="fas fa-users"></i>
-                <h3>Collaboration</h3>
-                <p>Working together to achieve extraordinary results</p>
+            <div class="team-card">
+                <img class="team-img" src="https://randomuser.me/api/portraits/men/44.jpg" alt="Plamen Motev">
+                <div class="team-info">
+                    <h3>Plamen Motev</h3>
+                    <p class="team-role">Creative Type Director</p>
+                    <div class="team-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="value-card">
-                <i class="fas fa-chart-line"></i>
-                <h3>Excellence</h3>
-                <p>Delivering the highest quality in everything we do</p>
+            <div class="team-card">
+                <img class="team-img" src="https://randomuser.me/api/portraits/women/65.jpg" alt="Maria Simova">
+                <div class="team-info">
+                    <h3>Maria Simova</h3>
+                    <p class="team-role">Co-founder &amp; Type Designer</p>
+                    <div class="team-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="value-card">
-                <i class="fas fa-heart"></i>
-                <h3>Passion</h3>
-                <p>Loving what we do and doing it with enthusiasm</p>
+            <div class="team-card">
+                <img class="team-img" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Viktoria Usmanova">
+                <div class="team-info">
+                    <h3>Viktoria Usmanova</h3>
+                    <p class="team-role">Type Director</p>
+                    <div class="team-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
+
+    <!-- Brand Logo Carousel Section -->
+    <section class="brand-carousel-section">
+      <h2 class="brand-carousel-heading">Our Brand Partners</h2>
+      <div class="brand-carousel-outer">
+        <div class="brand-carousel-track">
+          <!-- Repeat logos for infinite effect -->
+          <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google"></div>
+          <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft"></div>
+          <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon"></div>
+          <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix"></div>
+          <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></div>
+          <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple"></div>
+          <!-- Repeat for infinite effect -->
+          <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google"></div>
+          <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft"></div>
+          <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon"></div>
+          <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix"></div>
+          <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></div>
+          <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple"></div>
+           <!-- Repeat for infinite effect -->
+           <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google"></div>
+           <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft"></div>
+           <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon"></div>
+           <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix"></div>
+           <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></div>
+           <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple"></div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Office Work Culture Carousel Section -->
+    <section class="work-culture-section">
+      <h2 class="work-culture-heading">Our Office Work Culture</h2>
+      <div class="work-culture-carousel-container">
+        <div class="work-culture-carousel infinite" id="workCultureCarousel">
+          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80" alt="Team Collaboration"></div>
+          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80" alt="Office Meeting"></div>
+          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Creative Workspace"></div>
+          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1519241047957-be31d7379a5d?auto=format&fit=crop&w=800&q=80" alt="Team Celebration"></div>
+          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" alt="Brainstorming"></div>
+          <!-- Duplicate slides for infinite effect -->
+          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80" alt="Team Collaboration"></div>
+          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80" alt="Office Meeting"></div>
+          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Creative Workspace"></div>
+          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1519241047957-be31d7379a5d?auto=format&fit=crop&w=800&q=80" alt="Team Celebration"></div>
+          <div class="work-culture-slide"><img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" alt="Brainstorming"></div>
+        </div>
+        <div class="work-culture-dots" id="workCultureDots"></div>
+      </div>
     </section>
 
     <!-- Footer -->
@@ -330,5 +1287,129 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        entry.target.classList.add('slide-in');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.about-text, .about-stats').forEach((el) => observer.observe(el));
+
+            function animateNumbers() {
+                const stats = document.querySelectorAll('.stat-number');
+                stats.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-count'));
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+
+                    const updateNumber = () => {
+                        current += step;
+                        if (current < target) {
+                            stat.textContent = Math.floor(current);
+                            requestAnimationFrame(updateNumber);
+                        } else {
+                            stat.textContent = target;
+                        }
+                    };
+
+                    updateNumber();
+                });
+            }
+
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateNumbers();
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            statsObserver.observe(document.querySelector('.about-stats'));
+        });
+
+        // Team section scroll animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const teamCards = document.querySelectorAll('.team-card');
+            if (teamCards.length) {
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2 });
+                teamCards.forEach(card => observer.observe(card));
+            }
+        });
+
+        // Office Work Culture Infinite Carousel Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.getElementById('workCultureCarousel');
+            const slides = carousel.querySelectorAll('.work-culture-slide');
+            const dotsContainer = document.getElementById('workCultureDots');
+            const slideCount = slides.length / 2; // because we duplicated slides for infinite effect
+            let current = 0;
+            let interval;
+            function goToSlide(idx) {
+                current = (idx + slideCount) % slideCount;
+                carousel.style.transition = 'transform 0.6s cubic-bezier(.4,0,.2,1)';
+                carousel.style.transform = `translateX(-${current * 100}%)`;
+                updateDots();
+            }
+            function updateDots() {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < slideCount; i++) {
+                    const dot = document.createElement('span');
+                    dot.className = 'work-culture-dot' + (i === current ? ' active' : '');
+                    dot.addEventListener('click', () => {
+                        goToSlide(i);
+                        resetAuto();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            }
+            function nextSlide() {
+                if (current === slideCount - 1) {
+                    // Jump instantly to the duplicate set, then animate to the next
+                    carousel.style.transition = 'none';
+                    carousel.style.transform = `translateX(-${slideCount * 100}%)`;
+                    setTimeout(() => {
+                        carousel.style.transition = 'transform 0.6s cubic-bezier(.4,0,.2,1)';
+                        current = 0;
+                        carousel.style.transform = `translateX(-${current * 100}%)`;
+                        updateDots();
+                    }, 20);
+                } else {
+                    goToSlide(current + 1);
+                }
+            }
+            function startAuto() {
+                interval = setInterval(nextSlide, 3500);
+            }
+            function stopAuto() {
+                clearInterval(interval);
+            }
+            function resetAuto() {
+                stopAuto();
+                startAuto();
+            }
+            carousel.addEventListener('mouseenter', stopAuto);
+            carousel.addEventListener('mouseleave', startAuto);
+            goToSlide(0);
+            startAuto();
+        });
+    </script>
 </body>
 </html> 
