@@ -7,21 +7,82 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .portfolio-hero {
-            height: 40vh;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        /* Portfolio Banner */
+        .portfolio-banner {
+            height: 60vh;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            padding: 2rem;
+            position: relative;
         }
 
+        .banner-content {
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease;
+        }
+
+        .banner-content p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            opacity: 0.9;
+            animation: fadeInUp 1s ease;
+        }
+
+        /* Portfolio Section */
         .portfolio-section {
             padding: 5rem 5%;
+            background: var(--section-bg);
         }
 
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-color);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Filter Buttons */
         .filter-buttons {
             display: flex;
             justify-content: center;
@@ -35,21 +96,26 @@
             border: none;
             background: var(--light-bg);
             color: var(--text-color);
-            border-radius: 25px;
+            border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .filter-btn.active,
         .filter-btn:hover {
-            background: var(--secondary-color);
+            background: var(--primary-color);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(58, 122, 254, 0.3);
         }
 
+        /* Portfolio Grid */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
+            margin-bottom: 3rem;
         }
 
         .portfolio-item {
@@ -57,17 +123,30 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .portfolio-item.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .portfolio-item:hover {
             transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .portfolio-item img {
             width: 100%;
             height: 300px;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
         }
 
         .portfolio-overlay {
@@ -76,13 +155,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(42, 42, 114, 0.9);
+            background: rgba(15, 23, 42, 0.9);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
             padding: 2rem;
             text-align: center;
             color: white;
@@ -93,6 +172,7 @@
         }
 
         .portfolio-overlay h3 {
+            font-size: 1.5rem;
             margin-bottom: 1rem;
             transform: translateY(20px);
             transition: transform 0.3s ease;
@@ -102,6 +182,7 @@
             margin-bottom: 1.5rem;
             transform: translateY(20px);
             transition: transform 0.3s ease;
+            opacity: 0.9;
         }
 
         .portfolio-item:hover .portfolio-overlay h3,
@@ -112,31 +193,266 @@
         .portfolio-links {
             display: flex;
             gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .portfolio-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
             color: white;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
         }
 
         .portfolio-links a:hover {
-            color: var(--accent-color);
+            background: var(--primary-color);
+            transform: translateY(-3px);
         }
 
         .case-study-btn {
             display: inline-block;
             padding: 0.8rem 1.5rem;
-            background: var(--accent-color);
-            color: var(--dark-bg);
+            background: var(--primary-color);
+            color: white;
             text-decoration: none;
-            border-radius: 25px;
-            margin-top: 1rem;
-            transition: transform 0.3s ease;
+            border-radius: 30px;
+            transition: all 0.3s ease;
         }
 
         .case-study-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(58, 122, 254, 0.3);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-banner {
+                height: 50vh;
+            }
+
+            .banner-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .banner-content p {
+                font-size: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox.active .lightbox-content {
+            transform: translateY(0);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: var(--secondary-color);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .lightbox-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .lightbox-details {
+            padding: 1rem;
+        }
+
+        .lightbox-details h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .lightbox-details p {
+            color: var(--text-color);
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .lightbox-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            background: var(--light-bg);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .info-item h4 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .info-item p {
+            color: var(--text-color);
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .lightbox-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
             transform: scale(1.05);
+        }
+
+        @media (max-width: 992px) {
+            .lightbox-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lightbox-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .lightbox-content {
+                width: 95%;
+                padding: 1.5rem;
+                margin: 30px auto;
+            }
+
+            .lightbox-info {
+                grid-template-columns: 1fr;
+            }
+
+            .lightbox-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .lightbox-image {
+                height: 300px;
+            }
         }
     </style>
 </head>
@@ -167,98 +483,167 @@
         </div>
     </nav>
 
-    <!-- Portfolio Hero Section -->
-    <section class="portfolio-hero">
-        <div class="hero-content">
-            <h1>Our Work</h1>
-            <p>Discover our innovative digital marketing solutions</p>
+    <!-- Portfolio Banner -->
+    <section class="portfolio-banner">
+        <div class="banner-content">
+            <h1>Our Creative Portfolio</h1>
+            <p>Discover our innovative digital solutions and creative projects that have transformed businesses</p>
         </div>
     </section>
 
     <!-- Portfolio Section -->
     <section class="portfolio-section">
+        <div class="section-header">
+            <h2>Featured Projects</h2>
+            <p>Explore our diverse portfolio of successful projects across various industries</p>
+        </div>
+
         <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn active" data-filter="all">All Projects</button>
             <button class="filter-btn" data-filter="web">Web Design</button>
-            <button class="filter-btn" data-filter="social">Social Media</button>
             <button class="filter-btn" data-filter="branding">Branding</button>
             <button class="filter-btn" data-filter="marketing">Marketing</button>
+            <button class="filter-btn" data-filter="development">Development</button>
+            <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+            <button class="filter-btn" data-filter="ui">UI/UX Design</button>
         </div>
 
         <div class="portfolio-grid">
+            <!-- Portfolio Item 1 -->
             <div class="portfolio-item" data-category="web">
-                <img src="https://via.placeholder.com/600x400" alt="Web Design Project">
+                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="E-commerce Website">
                 <div class="portfolio-overlay">
-                    <h3>E-commerce Redesign</h3>
-                    <p>Complete website redesign for a leading fashion brand</p>
+                    <h3>E-commerce Platform</h3>
+                    <p>Modern e-commerce website with advanced features</p>
                     <div class="portfolio-links">
-                        <a href="#"><i class="fas fa-link"></i></a>
-                        <a href="#"><i class="fas fa-search"></i></a>
+                        <a href="#" aria-label="View Project"><i class="fas fa-link"></i></a>
+                        <a href="#" aria-label="View Details"><i class="fas fa-search"></i></a>
                     </div>
                     <a href="#" class="case-study-btn">View Case Study</a>
                 </div>
             </div>
 
-            <div class="portfolio-item" data-category="social">
-                <img src="https://via.placeholder.com/600x400" alt="Social Media Campaign">
-                <div class="portfolio-overlay">
-                    <h3>Viral Campaign</h3>
-                    <p>Social media campaign that reached 1M+ users</p>
-                    <div class="portfolio-links">
-                        <a href="#"><i class="fas fa-link"></i></a>
-                        <a href="#"><i class="fas fa-search"></i></a>
-                    </div>
-                    <a href="#" class="case-study-btn">View Case Study</a>
-                </div>
-            </div>
-
+            <!-- Portfolio Item 2 -->
             <div class="portfolio-item" data-category="branding">
-                <img src="https://via.placeholder.com/600x400" alt="Branding Project">
+                <img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Brand Identity">
                 <div class="portfolio-overlay">
                     <h3>Brand Identity</h3>
                     <p>Complete brand overhaul for a tech startup</p>
                     <div class="portfolio-links">
-                        <a href="#"><i class="fas fa-link"></i></a>
-                        <a href="#"><i class="fas fa-search"></i></a>
+                        <a href="#" aria-label="View Project"><i class="fas fa-link"></i></a>
+                        <a href="#" aria-label="View Details"><i class="fas fa-search"></i></a>
                     </div>
                     <a href="#" class="case-study-btn">View Case Study</a>
                 </div>
             </div>
 
+            <!-- Portfolio Item 3 -->
             <div class="portfolio-item" data-category="marketing">
-                <img src="https://via.placeholder.com/600x400" alt="Marketing Campaign">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Marketing Campaign">
                 <div class="portfolio-overlay">
                     <h3>Digital Campaign</h3>
                     <p>Multi-channel marketing campaign with 200% ROI</p>
                     <div class="portfolio-links">
-                        <a href="#"><i class="fas fa-link"></i></a>
-                        <a href="#"><i class="fas fa-search"></i></a>
+                        <a href="#" aria-label="View Project"><i class="fas fa-link"></i></a>
+                        <a href="#" aria-label="View Details"><i class="fas fa-search"></i></a>
                     </div>
                     <a href="#" class="case-study-btn">View Case Study</a>
                 </div>
             </div>
 
+            <!-- Portfolio Item 4 -->
+            <div class="portfolio-item" data-category="development">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Web Application">
+                <div class="portfolio-overlay">
+                    <h3>Web Application</h3>
+                    <p>Custom web application for business automation</p>
+                    <div class="portfolio-links">
+                        <a href="#" aria-label="View Project"><i class="fas fa-link"></i></a>
+                        <a href="#" aria-label="View Details"><i class="fas fa-search"></i></a>
+                    </div>
+                    <a href="#" class="case-study-btn">View Case Study</a>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 5 -->
+            <div class="portfolio-item" data-category="mobile">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Mobile App">
+                <div class="portfolio-overlay">
+                    <h3>Fitness App</h3>
+                    <p>Cross-platform mobile application for fitness tracking</p>
+                    <div class="portfolio-links">
+                        <a href="#" aria-label="View Project"><i class="fas fa-link"></i></a>
+                        <a href="#" aria-label="View Details"><i class="fas fa-search"></i></a>
+                    </div>
+                    <a href="#" class="case-study-btn">View Case Study</a>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 6 -->
+            <div class="portfolio-item" data-category="ui">
+                <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="UI Design">
+                <div class="portfolio-overlay">
+                    <h3>Dashboard UI</h3>
+                    <p>Modern dashboard interface for analytics platform</p>
+                    <div class="portfolio-links">
+                        <a href="#" aria-label="View Project"><i class="fas fa-link"></i></a>
+                        <a href="#" aria-label="View Details"><i class="fas fa-search"></i></a>
+                    </div>
+                    <a href="#" class="case-study-btn">View Case Study</a>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 7 -->
             <div class="portfolio-item" data-category="web">
-                <img src="https://via.placeholder.com/600x400" alt="Web Development">
+                <img src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Corporate Website">
                 <div class="portfolio-overlay">
                     <h3>Corporate Website</h3>
                     <p>Modern website design for a financial institution</p>
                     <div class="portfolio-links">
-                        <a href="#"><i class="fas fa-link"></i></a>
-                        <a href="#"><i class="fas fa-search"></i></a>
+                        <a href="#" aria-label="View Project"><i class="fas fa-link"></i></a>
+                        <a href="#" aria-label="View Details"><i class="fas fa-search"></i></a>
                     </div>
                     <a href="#" class="case-study-btn">View Case Study</a>
                 </div>
             </div>
 
-            <div class="portfolio-item" data-category="social">
-                <img src="https://via.placeholder.com/600x400" alt="Social Media Strategy">
+            <!-- Portfolio Item 8 -->
+            <div class="portfolio-item" data-category="branding">
+                <img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1215&q=80" alt="Brand Strategy">
                 <div class="portfolio-overlay">
-                    <h3>Social Strategy</h3>
-                    <p>Comprehensive social media strategy for a restaurant chain</p>
+                    <h3>Brand Strategy</h3>
+                    <p>Comprehensive brand strategy for a retail chain</p>
                     <div class="portfolio-links">
-                        <a href="#"><i class="fas fa-link"></i></a>
-                        <a href="#"><i class="fas fa-search"></i></a>
+                        <a href="#" aria-label="View Project"><i class="fas fa-link"></i></a>
+                        <a href="#" aria-label="View Details"><i class="fas fa-search"></i></a>
+                    </div>
+                    <a href="#" class="case-study-btn">View Case Study</a>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 9 -->
+            <div class="portfolio-item" data-category="mobile">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Food Delivery App">
+                <div class="portfolio-overlay">
+                    <h3>Food Delivery App</h3>
+                    <p>User-friendly mobile app for food delivery service</p>
+                    <div class="portfolio-links">
+                        <a href="#" aria-label="View Project"><i class="fas fa-link"></i></a>
+                        <a href="#" aria-label="View Details"><i class="fas fa-search"></i></a>
+                    </div>
+                    <a href="#" class="case-study-btn">View Case Study</a>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 10 -->
+            <div class="portfolio-item" data-category="ui">
+                <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="UI Design">
+                <div class="portfolio-overlay">
+                    <h3>Travel App UI</h3>
+                    <p>Intuitive user interface for travel booking platform</p>
+                    <div class="portfolio-links">
+                        <a href="#" aria-label="View Project"><i class="fas fa-link"></i></a>
+                        <a href="#" aria-label="View Details"><i class="fas fa-search"></i></a>
                     </div>
                     <a href="#" class="case-study-btn">View Case Study</a>
                 </div>
@@ -268,14 +653,8 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-waves">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="currentColor" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
-        </div>
-        
         <div class="footer-main">
-            <div class="container">
+            <div class="container" style="padding: 0 5rem;">
                 <div class="footer-grid">
                     <!-- Company Info -->
                     <div class="footer-brand">
@@ -344,7 +723,7 @@
         </div>
 
         <div class="footer-bottom">
-            <div class="container">
+            <div class="container" style="padding: 0 5rem;">
                 <div class="footer-bottom-content">
                     <p class="copyright">&copy; 2024 Nexus Digital. All rights reserved.</p>
                     <div class="footer-legal">
@@ -357,8 +736,64 @@
         </div>
     </footer>
 
+    <!-- Lightbox Template -->
+    <div class="lightbox" id="caseStudyLightbox">
+        <button class="lightbox-close" aria-label="Close lightbox">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-content">
+            <div class="lightbox-grid">
+                <img src="" alt="" class="lightbox-image" id="lightboxMainImage">
+                <div class="lightbox-details">
+                    <h2 id="lightboxTitle"></h2>
+                    <p id="lightboxDescription"></p>
+                    <div class="lightbox-info">
+                        <div class="info-item">
+                            <h4>Category</h4>
+                            <p id="lightboxCategory"></p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Client</h4>
+                            <p id="lightboxClient"></p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Duration</h4>
+                            <p id="lightboxDuration"></p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Technologies</h4>
+                            <p id="lightboxTechnologies"></p>
+                        </div>
+                    </div>
+                    <div class="lightbox-gallery" id="lightboxGallery">
+                        <!-- Gallery images will be added dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
     <script>
+        // Dark Mode Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            const currentTheme = localStorage.getItem('theme') || 
+                (prefersDarkScheme.matches ? 'dark' : 'light');
+            
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            function toggleTheme() {
+                const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            }
+            
+            darkModeToggle.addEventListener('click', toggleTheme);
+        });
+
         // Portfolio Filtering
         const filterButtons = document.querySelectorAll('.filter-btn');
         const portfolioItems = document.querySelectorAll('.portfolio-item');
@@ -375,11 +810,194 @@
                 portfolioItems.forEach(item => {
                     if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
                         item.style.display = 'block';
+                        setTimeout(() => {
+                            item.classList.add('animate');
+                        }, 100);
                     } else {
+                        item.classList.remove('animate');
                         item.style.display = 'none';
                     }
                 });
             });
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        portfolioItems.forEach(item => {
+            observer.observe(item);
+        });
+
+        // Case Study Data
+        const caseStudies = {
+            'web': {
+                title: 'E-commerce Platform',
+                description: 'A modern e-commerce platform built with advanced features including real-time inventory management, secure payment processing, and personalized shopping experiences. The platform has helped increase sales by 150% and improved customer satisfaction.',
+                category: 'Web Design',
+                client: 'Fashion Retailer',
+                duration: '3 months',
+                technologies: 'React, Node.js, MongoDB',
+                mainImage: 'https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80',
+                gallery: [
+                    'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                    'https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                    'https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80'
+                ]
+            },
+            'branding': {
+                title: 'Brand Identity',
+                description: 'Complete brand overhaul for a tech startup, including logo design, brand guidelines, and marketing materials. The new identity helped establish a strong market presence and increased brand recognition by 200%.',
+                category: 'Branding',
+                client: 'Tech Startup',
+                duration: '2 months',
+                technologies: 'Adobe Creative Suite, Figma',
+                mainImage: 'https://images.unsplash.com/photo-1634942537034-2531766767d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                gallery: [
+                    'https://images.unsplash.com/photo-1607083206968-13611e3d76db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1215&q=80',
+                    'https://images.unsplash.com/photo-1634942537034-2531766767d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                    'https://images.unsplash.com/photo-1607083206968-13611e3d76db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1215&q=80'
+                ]
+            },
+            'marketing': {
+                title: 'Digital Campaign',
+                description: 'Multi-channel marketing campaign that achieved 200% ROI through strategic social media, email marketing, and content creation. The campaign successfully increased brand awareness and customer engagement.',
+                category: 'Marketing',
+                client: 'Retail Brand',
+                duration: '4 months',
+                technologies: 'Social Media, Email Marketing, Analytics',
+                mainImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                gallery: [
+                    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+                ]
+            },
+            'development': {
+                title: 'Web Application',
+                description: 'Custom web application for business automation, featuring real-time data processing, user authentication, and advanced reporting capabilities. The solution improved operational efficiency by 40%.',
+                category: 'Development',
+                client: 'Enterprise Client',
+                duration: '6 months',
+                technologies: 'Vue.js, Python, PostgreSQL',
+                mainImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                gallery: [
+                    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+                ]
+            },
+            'mobile': {
+                title: 'Fitness App',
+                description: 'Cross-platform mobile application for fitness tracking, featuring workout plans, progress tracking, and social features. The app has been downloaded over 100,000 times and maintains a 4.8-star rating.',
+                category: 'Mobile Apps',
+                client: 'Fitness Brand',
+                duration: '5 months',
+                technologies: 'React Native, Firebase, Redux',
+                mainImage: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                gallery: [
+                    'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                    'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                    'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+                ]
+            },
+            'ui': {
+                title: 'Dashboard UI',
+                description: 'Modern dashboard interface for analytics platform, featuring intuitive data visualization, real-time updates, and customizable widgets. The design improved user engagement by 60%.',
+                category: 'UI/UX Design',
+                client: 'SaaS Company',
+                duration: '3 months',
+                technologies: 'Figma, Adobe XD, HTML/CSS',
+                mainImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80',
+                gallery: [
+                    'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80',
+                    'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80',
+                    'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80'
+                ]
+            }
+        };
+
+        // Lightbox Functionality
+        const lightbox = document.getElementById('caseStudyLightbox');
+        const closeButton = lightbox.querySelector('.lightbox-close');
+        const mainImage = document.getElementById('lightboxMainImage');
+        const title = document.getElementById('lightboxTitle');
+        const description = document.getElementById('lightboxDescription');
+        const category = document.getElementById('lightboxCategory');
+        const client = document.getElementById('lightboxClient');
+        const duration = document.getElementById('lightboxDuration');
+        const technologies = document.getElementById('lightboxTechnologies');
+        const gallery = document.getElementById('lightboxGallery');
+
+        function openLightbox(projectId) {
+            const project = caseStudies[projectId];
+            if (!project) {
+                console.log('Project not found:', projectId);
+                return;
+            }
+
+            mainImage.src = project.mainImage;
+            title.textContent = project.title;
+            description.textContent = project.description;
+            category.textContent = project.category;
+            client.textContent = project.client;
+            duration.textContent = project.duration;
+            technologies.textContent = project.technologies;
+
+            // Clear and populate gallery
+            gallery.innerHTML = '';
+            project.gallery.forEach(image => {
+                const img = document.createElement('img');
+                img.src = image;
+                img.alt = project.title;
+                img.className = 'gallery-item';
+                img.onclick = () => mainImage.src = image;
+                gallery.appendChild(img);
+            });
+
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event Listeners
+        closeButton.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // Update case study buttons to open lightbox
+        document.querySelectorAll('.case-study-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const portfolioItem = button.closest('.portfolio-item');
+                const projectId = portfolioItem.getAttribute('data-category');
+                console.log('Opening project:', projectId);
+                openLightbox(projectId);
+            });
+        });
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
         });
     </script>
 </body>

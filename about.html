@@ -971,6 +971,158 @@
         [data-theme="dark"] .stat-item p {
             color: var(--text-color);
         }
+
+        /* Footer Styles */
+        .footer {
+            background: #0F172A;
+            color: var(--text-color);
+            padding-top: 4rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-main {
+            padding-bottom: 3rem;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .brand-description {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light-bg);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-menu li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-menu a {
+            color: #B7BAB1;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-menu a:hover {
+            color: var(--primary-color);
+            opacity: 1;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .contact-list i {
+            margin-right: 1rem;
+            color: #B7BAB1;
+        }
+
+        .footer-bottom {
+            background: #0A101D;
+            padding: 1.5rem 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            opacity: 0.8;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-legal a {
+            color: #B7BAB1;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--primary-color);
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .footer-legal {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1301,14 +1453,8 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-waves">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="currentColor" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
-        </div>
-        
         <div class="footer-main">
-            <div class="container">
+            <div class="container" style="padding: 0 5rem;">
                 <div class="footer-grid">
                     <!-- Company Info -->
                     <div class="footer-brand">
@@ -1377,7 +1523,7 @@
         </div>
 
         <div class="footer-bottom">
-            <div class="container">
+            <div class="container" style="padding: 0 5rem;">
                 <div class="footer-bottom-content">
                     <p class="copyright">&copy; 2024 Nexus Digital. All rights reserved.</p>
                     <div class="footer-legal">
