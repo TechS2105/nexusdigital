@@ -825,6 +825,89 @@
                 padding: 1.2rem 0.5rem 1.2rem 0.5rem;
             }
         }
+
+        /* Work Culture Section Styles */
+        .work-culture-section {
+           
+            padding: 3.5rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .work-culture-heading {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 2.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .work-culture-carousel-outer {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .work-culture-carousel {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            animation: work-culture-scroll 30s linear infinite;
+            will-change: transform;
+        }
+
+        .work-culture-image {
+            flex: 0 0 auto;
+            width: 400px;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(58,122,254,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .work-culture-image:hover {
+            transform: scale(1.05);
+        }
+
+        .work-culture-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .work-culture-image:hover img {
+            transform: scale(1.1);
+        }
+
+        @keyframes work-culture-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        @media (max-width: 900px) {
+            .work-culture-image {
+                width: 300px;
+                height: 225px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .work-culture-section {
+                padding: 2rem 0;
+            }
+            .work-culture-heading {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .work-culture-image {
+                width: 250px;
+                height: 187px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -991,6 +1074,41 @@
            <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></div>
            <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple"></div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Culture Section -->
+    <section class="work-culture-section">
+        <h2 class="work-culture-heading">Our Work Culture</h2>
+        <div class="work-culture-carousel-outer">
+            <div class="work-culture-carousel">
+                <!-- Office Images -->
+                <div class="work-culture-image">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Modern Office Space">
+                </div>
+                <div class="work-culture-image">
+                    <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team Collaboration">
+                </div>
+                <div class="work-culture-image">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Creative Workspace">
+                </div>
+                <div class="work-culture-image">
+                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Office Meeting">
+                </div>
+                <!-- Repeat for infinite effect -->
+                <div class="work-culture-image">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Modern Office Space">
+                </div>
+                <div class="work-culture-image">
+                    <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team Collaboration">
+                </div>
+                <div class="work-culture-image">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Creative Workspace">
+                </div>
+                <div class="work-culture-image">
+                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Office Meeting">
+                </div>
             </div>
         </div>
     </section>
