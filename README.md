@@ -65,12 +65,23 @@ A modern, responsive website for Nexus Digital, featuring multiple pages and int
     - Better organization of footer links and content
 
 ### Contact (contact.html)
-- Contact form with validation
-- Google Maps integration
-- Office locations
-- Contact information
-- Social media links
-- Business hours
+- Modern contact form with validation
+- Fixed banner section with parallax effect
+- Google Maps integration below contact form
+- Dark mode support
+- Responsive design
+
+#### Recent Updates
+- Redesigned contact page layout:
+  - Moved map section below contact form
+  - Added proper spacing between form and map
+  - Simplified map container design
+  - Optimized map height and responsiveness
+  - Improved overall page layout
+  - Fixed contact form display issues
+  - Enhanced form field accessibility
+  - Added proper form validation
+  - Implemented success/error message handling
 
 ## Features
 
@@ -123,11 +134,10 @@ A modern, responsive website for Nexus Digital, featuring multiple pages and int
   - Read more links
 
 ### Contact Page
-- Contact form with validation
-- Google Maps integration
-- Office location information
-- Social media links
-- Business hours
+- Modern contact form with validation
+- Google Maps integration below contact form
+- Dark mode support
+- Responsive design
 
 ## Technologies Used
 - HTML5
@@ -169,4 +179,4 @@ A modern, responsive website for Nexus Digital, featuring multiple pages and int
 Feel free to submit issues and enhancement requests.
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details. 
+This project is licensed under the MIT License - see the LICENSE file for details.
