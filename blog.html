@@ -7,166 +7,363 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .blog-hero {
-            height: 40vh;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        :root {
+            --primary-color: #3a7afe;
+            --secondary-color: #4a8fff;
+            --text-color: #1a1a1a;
+            --light-bg: #ffffff;
+            --card-bg: #ffffff;
+            --section-bg: #f4f7fa;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #4a8fff;
+            --secondary-color: #5a9fff;
+            --text-color: #ffffff;
+            --light-bg: #2d2d2d;
+            --card-bg: #363636;
+            --section-bg: #2d2d2d;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Blog Banner */
+        .blog-banner {
+            height: 60vh;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            padding: 2rem;
+            position: relative;
+            overflow: hidden;
         }
 
+        .blog-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+        }
+
+        .banner-content {
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .banner-content p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            opacity: 0.9;
+        }
+
+        /* Blog Section */
         .blog-section {
             padding: 5rem 5%;
-        }
-
-        .search-section {
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            padding-right: 3rem;
-            border: 2px solid #ddd;
-            border-radius: 25px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .search-input:focus {
-            border-color: var(--secondary-color);
-            outline: none;
-        }
-
-        .search-btn {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--secondary-color);
-            cursor: pointer;
-            font-size: 1.2rem;
+            background: var(--section-bg);
         }
 
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .blog-card {
-            background: white;
-            border-radius: 15px;
+            background: var(--card-bg);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .blog-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
         .blog-image {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .blog-image {
+            transform: scale(1.05);
         }
 
         .blog-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
-        .blog-meta {
+        .blog-date {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            color: #666;
-            font-size: 0.9rem;
+            gap: 0.5rem;
         }
 
-        .blog-meta i {
-            color: var(--secondary-color);
+        .blog-date i {
+            font-size: 1rem;
         }
 
         .blog-content h3 {
-            color: var(--primary-color);
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-            font-size: 1.3rem;
+            color: var(--text-color);
+            line-height: 1.4;
         }
 
-        .blog-content p {
-            color: #666;
+        .blog-excerpt {
+            color: var(--text-color);
+            opacity: 0.8;
             margin-bottom: 1.5rem;
             line-height: 1.6;
         }
 
         .read-more {
-            display: inline-block;
-            color: var(--secondary-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: gap 0.3s ease;
         }
 
         .read-more:hover {
-            color: var(--primary-color);
+            gap: 0.8rem;
         }
 
-        .pagination {
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow: hidden;
+        }
+
+        .lightbox.active {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 3rem;
+            opacity: 1;
         }
 
-        .page-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--secondary-color);
-            border-radius: 5px;
-            color: var(--secondary-color);
-            text-decoration: none;
-            transition: all 0.3s ease;
+        .lightbox-content {
+            position: relative;
+            max-width: 900px;
+            width: 90%;
+            margin: 50px auto;
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        .page-btn:hover,
-        .page-btn.active {
+        .lightbox.active .lightbox-content {
+            transform: scale(1);
+        }
+
+        .lightbox-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .lightbox-details {
+            padding: 2rem;
+            overflow-y: auto;
+            max-height: calc(90vh - 400px);
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--card-bg);
+        }
+
+        /* Custom Scrollbar Styles */
+        .lightbox-details::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .lightbox-details::-webkit-scrollbar-track {
+            background: var(--card-bg);
+            border-radius: 4px;
+        }
+
+        .lightbox-details::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .lightbox-details::-webkit-scrollbar-thumb:hover {
             background: var(--secondary-color);
-            color: white;
         }
 
-        .categories {
-            margin-bottom: 3rem;
-            text-align: center;
+        .lightbox-date {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
-        .category-btn {
-            padding: 0.5rem 1.5rem;
-            margin: 0.5rem;
-            border: none;
-            background: var(--light-bg);
+        .lightbox-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
             color: var(--text-color);
-            border-radius: 25px;
+            line-height: 1.4;
+        }
+
+        .lightbox-description {
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .close-lightbox {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+            z-index: 1001;
+            padding: 0;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .close-lightbox i {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .close-lightbox:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .banner-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lightbox-content {
+                margin: 20px auto;
+                width: 95%;
+            }
+
+            .lightbox-image {
+                height: 300px;
+            }
+
+            .lightbox-details {
+                max-height: calc(90vh - 300px);
+            }
+
+            .lightbox-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Load More Button Styles */
+        .load-more-container {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1rem;
+        }
+
+        .load-more-btn {
+            padding: 1rem 2.5rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .category-btn.active,
-        .category-btn:hover {
+        .load-more-btn:hover {
             background: var(--secondary-color);
-            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(58, 122, 254, 0.3);
+        }
+
+        .load-more-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .load-more-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .load-more-btn:hover i {
+            transform: translateY(2px);
+        }
+
+        .blog-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -197,124 +394,96 @@
         </div>
     </nav>
 
-    <!-- Blog Hero Section -->
-    <section class="blog-hero">
-        <div class="hero-content">
-            <h1>Our Blog</h1>
-            <p>Latest insights and trends in digital marketing</p>
+    <!-- Blog Banner -->
+    <section class="blog-banner">
+        <div class="banner-content">
+            <h1>Digital Insights & Trends</h1>
+            <p>Explore the latest in digital marketing, technology, and innovation</p>
         </div>
     </section>
 
     <!-- Blog Section -->
     <section class="blog-section">
-        <!-- Search Section -->
-        <div class="search-section">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search articles...">
-                <button class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Categories -->
-        <div class="categories">
-            <button class="category-btn active">All</button>
-            <button class="category-btn">Digital Marketing</button>
-            <button class="category-btn">Social Media</button>
-            <button class="category-btn">SEO</button>
-            <button class="category-btn">Web Design</button>
-        </div>
-
-        <!-- Blog Grid -->
-        <div class="blog-grid">
-            <article class="blog-card">
-                <img src="https://via.placeholder.com/600x400" alt="Blog Post" class="blog-image">
+        <div class="blog-grid" id="blogGrid">
+            <!-- Blog Card 1 -->
+            <article class="blog-card" data-blog-id="1">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80" alt="Digital Marketing" class="blog-image">
                 <div class="blog-content">
-                    <div class="blog-meta">
-                        <span><i class="far fa-calendar"></i> March 15, 2024</span>
-                        <span><i class="far fa-user"></i> John Doe</span>
+                    <div class="blog-date">
+                        <i class="far fa-calendar"></i>
+                        March 15, 2024
                     </div>
                     <h3>The Future of Digital Marketing in 2024</h3>
-                    <p>Explore the latest trends and technologies shaping the future of digital marketing...</p>
+                    <p class="blog-excerpt">Explore the latest trends and technologies shaping the future of digital marketing...</p>
                     <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
             </article>
 
-            <article class="blog-card">
-                <img src="https://via.placeholder.com/600x400" alt="Blog Post" class="blog-image">
+            <!-- Blog Card 2 -->
+            <article class="blog-card" data-blog-id="2">
+                <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Social Media" class="blog-image">
                 <div class="blog-content">
-                    <div class="blog-meta">
-                        <span><i class="far fa-calendar"></i> March 12, 2024</span>
-                        <span><i class="far fa-user"></i> Jane Smith</span>
+                    <div class="blog-date">
+                        <i class="far fa-calendar"></i>
+                        March 12, 2024
                     </div>
                     <h3>Social Media Strategy for 2024</h3>
-                    <p>Learn how to create an effective social media strategy that drives engagement...</p>
+                    <p class="blog-excerpt">Learn how to create an effective social media strategy that drives engagement...</p>
                     <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
             </article>
 
-            <article class="blog-card">
-                <img src="https://via.placeholder.com/600x400" alt="Blog Post" class="blog-image">
+            <!-- Blog Card 3 -->
+            <article class="blog-card" data-blog-id="3">
+                <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="SEO Analytics Dashboard" class="blog-image">
                 <div class="blog-content">
-                    <div class="blog-meta">
-                        <span><i class="far fa-calendar"></i> March 10, 2024</span>
-                        <span><i class="far fa-user"></i> Mike Johnson</span>
+                    <div class="blog-date">
+                        <i class="far fa-calendar"></i>
+                        March 10, 2024
                     </div>
                     <h3>SEO Best Practices for 2024</h3>
-                    <p>Discover the latest SEO techniques to improve your website's visibility...</p>
+                    <p class="blog-excerpt">Discover the latest SEO techniques to improve your website's visibility...</p>
                     <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
             </article>
 
-            <article class="blog-card">
-                <img src="https://via.placeholder.com/600x400" alt="Blog Post" class="blog-image">
+            <!-- Blog Card 4 -->
+            <article class="blog-card" data-blog-id="4">
+                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80" alt="Web Design" class="blog-image">
                 <div class="blog-content">
-                    <div class="blog-meta">
-                        <span><i class="far fa-calendar"></i> March 8, 2024</span>
-                        <span><i class="far fa-user"></i> Sarah Williams</span>
+                    <div class="blog-date">
+                        <i class="far fa-calendar"></i>
+                        March 8, 2024
                     </div>
                     <h3>Web Design Trends for 2024</h3>
-                    <p>Explore the latest web design trends that will dominate in 2024...</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <img src="https://via.placeholder.com/600x400" alt="Blog Post" class="blog-image">
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <span><i class="far fa-calendar"></i> March 5, 2024</span>
-                        <span><i class="far fa-user"></i> John Doe</span>
-                    </div>
-                    <h3>Content Marketing Strategies</h3>
-                    <p>Learn how to create compelling content that resonates with your audience...</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <img src="https://via.placeholder.com/600x400" alt="Blog Post" class="blog-image">
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <span><i class="far fa-calendar"></i> March 3, 2024</span>
-                        <span><i class="far fa-user"></i> Jane Smith</span>
-                    </div>
-                    <h3>Email Marketing Best Practices</h3>
-                    <p>Discover effective email marketing strategies to boost your ROI...</p>
+                    <p class="blog-excerpt">Explore the latest web design trends that will dominate in 2024...</p>
                     <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
             </article>
         </div>
 
-        <!-- Pagination -->
-        <div class="pagination">
-            <a href="#" class="page-btn active">1</a>
-            <a href="#" class="page-btn">2</a>
-            <a href="#" class="page-btn">3</a>
-            <a href="#" class="page-btn">Next <i class="fas fa-chevron-right"></i></a>
+        <!-- Load More Button -->
+        <div class="load-more-container">
+            <button class="load-more-btn" id="loadMoreBtn">
+                Load More <i class="fas fa-arrow-down"></i>
+            </button>
         </div>
     </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="blogLightbox">
+        <div class="lightbox-content">
+            <button class="close-lightbox">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="" alt="" class="lightbox-image">
+            <div class="lightbox-details">
+                <div class="lightbox-date"></div>
+                <h2 class="lightbox-title"></h2>
+                <p class="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -409,49 +578,312 @@
 
     <script src="script.js"></script>
     <script>
-        // Search Functionality
-        const searchInput = document.querySelector('.search-input');
-        const searchBtn = document.querySelector('.search-btn');
-        const blogCards = document.querySelectorAll('.blog-card');
-
-        const performSearch = () => {
-            const searchTerm = searchInput.value.toLowerCase();
+        // Dark Mode Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
             
-            blogCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const content = card.querySelector('p').textContent.toLowerCase();
-                
-                if (title.includes(searchTerm) || content.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+            const currentTheme = localStorage.getItem('theme') || 
+                (prefersDarkScheme.matches ? 'dark' : 'light');
+            
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            function toggleTheme() {
+                const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            }
+            
+            darkModeToggle.addEventListener('click', toggleTheme);
+        });
+
+        // Blog Data with 24 blogs
+        const blogData = {
+            1: {
+                title: "The Future of Digital Marketing in 2024",
+                date: "March 15, 2024",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80",
+                description: "The digital marketing landscape is evolving rapidly in 2024. Artificial Intelligence and Machine Learning are becoming integral parts of marketing strategies, enabling more personalized customer experiences. Voice search optimization is gaining importance as more users adopt voice assistants. Video content continues to dominate social media platforms, with short-form videos leading the way. Privacy concerns are shaping how marketers collect and use data, leading to more transparent and ethical marketing practices. Companies are focusing on creating authentic, value-driven content that resonates with their target audience."
+            },
+            2: {
+                title: "Social Media Strategy for 2024",
+                date: "March 12, 2024",
+                image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+                description: "Social media marketing in 2024 requires a more strategic approach than ever before. The rise of ephemeral content and stories has changed how brands engage with their audience. Social commerce is becoming increasingly important, with platforms integrating shopping features directly into their interfaces. Community building and engagement are key focus areas, as algorithms favor content that generates meaningful interactions. Brands are leveraging user-generated content and influencer partnerships to build trust and authenticity. Data analytics and social listening tools are essential for understanding audience behavior and optimizing content strategy."
+            },
+            3: {
+                title: "SEO Best Practices for 2024",
+                date: "March 10, 2024",
+                image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80",
+                description: "SEO in 2024 is more sophisticated than ever, with search engines prioritizing user experience and content quality. Core Web Vitals and page experience signals are crucial ranking factors. Mobile-first indexing is now the standard, making responsive design essential. Voice search optimization requires a focus on natural language and question-based content. Featured snippets and zero-click searches are changing how we approach keyword targeting. Local SEO is increasingly important for businesses with physical locations. Content needs to be comprehensive, authoritative, and user-focused to rank well."
+            },
+            4: {
+                title: "Web Design Trends for 2024",
+                date: "March 8, 2024",
+                image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80",
+                description: "Web design in 2024 is all about creating immersive, user-centric experiences. Dark mode has become a standard feature, reducing eye strain and saving battery life. Micro-interactions and subtle animations enhance user engagement without compromising performance. Minimalist design continues to dominate, with a focus on whitespace and typography. 3D elements and immersive experiences are becoming more common, thanks to improved browser capabilities. Accessibility is a top priority, with designers ensuring their work is usable by everyone. Mobile-first design is now the standard approach, with responsive design being more important than ever."
+            },
+            5: {
+                title: "Content Marketing Strategies",
+                date: "March 5, 2024",
+                image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Content marketing continues to be a crucial strategy for businesses in 2024. The focus has shifted from quantity to quality, with emphasis on creating valuable, engaging content that truly resonates with the target audience. Storytelling has become more important than ever, helping brands connect with their audience on a deeper level. Video content, especially short-form videos, is dominating the content landscape. Interactive content is gaining popularity, providing more engaging user experiences. Data-driven content strategies are helping businesses create more targeted and effective content."
+            },
+            6: {
+                title: "Email Marketing Best Practices",
+                date: "March 3, 2024",
+                image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+                description: "Email marketing remains one of the most effective digital marketing channels in 2024. Personalization has become more sophisticated, with AI-powered tools helping create highly targeted campaigns. Mobile optimization is crucial, as more users check their emails on mobile devices. Interactive emails are gaining popularity, providing more engaging experiences. Automation has become more advanced, allowing for better segmentation and timing of emails. Privacy regulations are shaping how businesses collect and use email data."
+            },
+            7: {
+                title: "Social Media Analytics",
+                date: "March 1, 2024",
+                image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+                description: "Understanding social media analytics is crucial for success in 2024. Advanced analytics tools provide deeper insights into audience behavior and campaign performance. Real-time analytics help businesses make quick adjustments to their strategies. Sentiment analysis helps understand how audiences feel about brands and campaigns. ROI tracking has become more sophisticated, helping businesses justify their social media investments."
+            },
+            8: {
+                title: "Video Marketing Trends",
+                date: "February 28, 2024",
+                image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Video marketing continues to dominate digital content in 2024. Short-form videos are leading the way, with platforms like TikTok and Instagram Reels driving engagement. Live streaming has become more interactive, with real-time audience participation. 360-degree videos and VR content are creating immersive brand experiences. Video SEO is crucial for visibility, with optimized titles, descriptions, and thumbnails."
+            },
+            9: {
+                title: "Mobile Marketing Strategies",
+                date: "February 25, 2024",
+                image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Mobile marketing is more important than ever in 2024. Mobile-first design is essential for all digital assets. Push notifications and in-app messages are key engagement tools. Mobile payment solutions are streamlining the purchase process. Location-based marketing is becoming more sophisticated. Mobile apps are increasingly integrated with other marketing channels."
+            },
+            10: {
+                title: "AI in Digital Marketing",
+                date: "February 22, 2024",
+                image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Artificial Intelligence is transforming digital marketing in 2024. AI-powered chatbots provide 24/7 customer service. Predictive analytics help forecast customer behavior. Automated content creation tools are becoming more sophisticated. AI-driven personalization creates unique customer experiences. Machine learning optimizes marketing campaigns in real-time."
+            },
+            11: {
+                title: "Voice Search Optimization",
+                date: "February 20, 2024",
+                image: "https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Voice search optimization is crucial for SEO in 2024. Natural language processing is key to voice search success. Long-tail keywords are more important than ever. Local SEO is essential for voice search results. Featured snippets help capture voice search traffic. Mobile optimization is critical for voice search performance."
+            },
+            12: {
+                title: "Influencer Marketing Trends",
+                date: "February 18, 2024",
+                image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
+                description: "Influencer marketing continues to evolve in 2024. Micro-influencers are gaining more traction for their authentic engagement. Long-term partnerships are replacing one-off campaigns. Performance-based compensation is becoming standard. Influencer authenticity is more important than follower count. Data-driven influencer selection is optimizing campaign results."
+            },
+            13: {
+                title: "E-commerce Marketing",
+                date: "February 16, 2024",
+                image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "E-commerce marketing is becoming more sophisticated in 2024. Social commerce is integrating shopping directly into social platforms. AI-powered product recommendations are improving conversion rates. Mobile shopping experiences are more streamlined. Augmented reality is enhancing product visualization. Personalization is driving customer loyalty and repeat purchases."
+            },
+            14: {
+                title: "Data Privacy in Marketing",
+                date: "February 14, 2024",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Data privacy is a top priority in digital marketing for 2024. GDPR and CCPA compliance is essential for all businesses. First-party data collection is becoming more important. Privacy-first marketing strategies are gaining traction. Transparent data collection practices build trust. Secure data storage and processing are non-negotiable."
+            },
+            15: {
+                title: "Content Personalization",
+                date: "February 12, 2024",
+                image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Content personalization is reaching new heights in 2024. AI-driven content recommendations are more accurate. Dynamic content adapts to user behavior in real-time. Personalized email campaigns show higher engagement rates. User journey mapping creates more relevant content. A/B testing optimizes personalization strategies."
+            },
+            16: {
+                title: "Social Commerce",
+                date: "February 10, 2024",
+                image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+                description: "Social commerce is revolutionizing online shopping in 2024. In-app shopping features are becoming standard. Live shopping events drive real-time engagement. Social proof influences purchase decisions. Influencer collaborations boost product visibility. Seamless checkout processes improve conversion rates."
+            },
+            17: {
+                title: "Marketing Automation",
+                date: "February 8, 2024",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Marketing automation is becoming more sophisticated in 2024. AI-powered workflows optimize campaign timing. Cross-channel automation creates consistent experiences. Behavioral triggers drive personalized engagement. Automated reporting provides real-time insights. Integration with CRM systems improves lead management."
+            },
+            18: {
+                title: "Local SEO Strategies",
+                date: "February 6, 2024",
+                image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80",
+                description: "Local SEO is crucial for businesses with physical locations in 2024. Google Business Profile optimization is essential. Local content creation drives visibility. Review management impacts local rankings. Local link building strategies are evolving. Mobile optimization is critical for local search success."
+            },
+            19: {
+                title: "Digital PR Strategies",
+                date: "February 4, 2024",
+                image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Digital PR is evolving in 2024. Online reputation management is more important than ever. Social media crisis management requires quick response. Influencer partnerships drive brand awareness. Content distribution strategies are more targeted. Digital PR metrics provide better ROI measurement."
+            },
+            20: {
+                title: "Mobile App Marketing",
+                date: "February 2, 2024",
+                image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Mobile app marketing is becoming more sophisticated in 2024. App store optimization is crucial for visibility. In-app messaging drives user engagement. Push notification strategies are more personalized. App analytics provide deeper user insights. Cross-promotion strategies expand user base."
+            },
+            21: {
+                title: "Digital Analytics",
+                date: "January 31, 2024",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Digital analytics is more powerful than ever in 2024. Real-time data analysis drives quick decisions. Predictive analytics forecasts future trends. Cross-channel attribution provides complete insights. Custom dashboards track key metrics. Data visualization makes insights more accessible."
+            },
+            22: {
+                title: "Content Distribution",
+                date: "January 29, 2024",
+                image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Content distribution strategies are evolving in 2024. Multi-channel distribution maximizes reach. Social media platforms drive content engagement. Email newsletters remain effective. Content syndication expands audience. Paid promotion targets specific demographics."
+            },
+            23: {
+                title: "Digital Strategy Planning",
+                date: "January 27, 2024",
+                image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80",
+                description: "Digital strategy planning is more comprehensive in 2024. Data-driven decision making guides strategy. Cross-channel integration creates cohesive experiences. Customer journey mapping optimizes touchpoints. ROI measurement is more sophisticated. Agile methodology enables quick adaptation."
+            },
+            24: {
+                title: "Digital Marketing Automation",
+                date: "February 15, 2024",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Marketing automation has revolutionized how businesses approach digital marketing in 2024. AI-powered automation tools help create more personalized customer experiences. Automated workflows save time and improve efficiency. Predictive analytics help anticipate customer needs and behaviors. Integration with CRM systems provides a more complete view of customer interactions. Automation is helping businesses scale their marketing efforts while maintaining personalization."
+            }
         };
 
-        searchBtn.addEventListener('click', performSearch);
-        searchInput.addEventListener('keyup', (e) => {
-            if (e.key === 'Enter') {
-                performSearch();
+        // Load More Functionality
+        const blogGrid = document.getElementById('blogGrid');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const lightbox = document.getElementById('blogLightbox');
+        const closeLightboxBtn = document.querySelector('.close-lightbox');
+        let currentPage = 1;
+        const blogsPerPage = 4;
+        const totalBlogs = Object.keys(blogData).length;
+
+        // Close lightbox function
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox when clicking the close button
+        closeLightboxBtn.addEventListener('click', closeLightbox);
+
+        // Close lightbox when clicking outside the content
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
             }
         });
 
-        // Category Filtering
-        const categoryBtns = document.querySelectorAll('.category-btn');
-        
-        categoryBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                categoryBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                btn.classList.add('active');
-                
-                const category = btn.textContent;
-                
-                // Here you would typically filter the blog posts based on category
-                console.log('Selected category:', category);
-            });
+        // Close lightbox when pressing Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
         });
+
+        // Function to open lightbox
+        function openLightbox(blog) {
+            lightbox.querySelector('.lightbox-image').src = blog.image;
+            lightbox.querySelector('.lightbox-date').textContent = blog.date;
+            lightbox.querySelector('.lightbox-title').textContent = blog.title;
+            lightbox.querySelector('.lightbox-description').textContent = blog.description;
+            
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Reset scroll position when opening lightbox
+            document.querySelector('.lightbox-details').scrollTop = 0;
+        }
+
+        function createBlogCard(blogId, blog) {
+            const card = document.createElement('article');
+            card.className = 'blog-card';
+            card.setAttribute('data-blog-id', blogId);
+            
+            card.innerHTML = `
+                <img src="${blog.image}" alt="${blog.title}" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-date">
+                        <i class="far fa-calendar"></i>
+                        ${blog.date}
+                    </div>
+                    <h3>${blog.title}</h3>
+                    <p class="blog-excerpt">${blog.description.substring(0, 100)}...</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            `;
+
+            // Add click event for lightbox
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                openLightbox(blog);
+            });
+
+            return card;
+        }
+
+        // Initialize lightbox for existing blog cards
+        document.querySelectorAll('.blog-card').forEach(card => {
+            const blogId = card.getAttribute('data-blog-id');
+            const blog = blogData[blogId];
+            if (blog) {
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openLightbox(blog);
+                });
+            }
+        });
+
+        function loadBlogs() {
+            const start = (currentPage - 1) * blogsPerPage;
+            const end = start + blogsPerPage;
+            const blogIds = Object.keys(blogData);
+
+            for (let i = start; i < end && i < blogIds.length; i++) {
+                const blogId = blogIds[i];
+                const blog = blogData[blogId];
+                const card = createBlogCard(blogId, blog);
+                blogGrid.appendChild(card);
+
+                // Trigger animation
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, 100 * (i - start));
+            }
+
+            // Update button state
+            if (end >= totalBlogs) {
+                loadMoreBtn.disabled = true;
+                loadMoreBtn.innerHTML = 'No More Blogs <i class="fas fa-check"></i>';
+            }
+        }
+
+        // Initial load
+        loadBlogs();
+
+        // Load more button click handler
+        loadMoreBtn.addEventListener('click', () => {
+            currentPage++;
+            loadBlogs();
+        });
+
+        // Update scroll animation observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        // Observe new blog cards as they're added
+        const observeNewCards = () => {
+            document.querySelectorAll('.blog-card:not(.visible)').forEach(card => {
+                observer.observe(card);
+            });
+        };
+
+        // Initial observation
+        observeNewCards();
     </script>
 </body>
 </html> 

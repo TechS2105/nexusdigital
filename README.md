@@ -1,92 +1,163 @@
-# Nexus Digital - Digital Marketing Website
+# Nexus Digital Website
 
-A modern, responsive website for a digital marketing agency built with HTML, CSS, and JavaScript. The website showcases the agency's services, portfolio, and expertise in digital marketing solutions.
+A modern, responsive website for Nexus Digital, featuring multiple pages and interactive elements.
 
-## 🌟 Features
+## Pages
 
+### Home (index.html)
+- Hero section with animated text and call-to-action
+- Services overview with hover effects
+- About section with company information
+- Portfolio showcase with filtering
+- Testimonials carousel
+- Contact form with validation
+- Footer with social links and company information
+
+### About (about.html)
+- Company history and mission
+- Team member profiles
+- Company values and achievements
+- Interactive timeline
+- Client testimonials
+- Call-to-action section
+
+### Portfolio (portfolio.html)
+- Project showcase with filtering
+- Project details in lightbox
+- Category-based navigation
+- Responsive grid layout
+- Project statistics
+- Client testimonials
+
+### Blog (blog.html)
+- Modern blog layout with grid system
+- Responsive design for all devices
+- Dark mode support
+- Interactive features:
+  - Blog card hover effects
+  - Lightbox for detailed blog view
+  - Load more functionality
+  - Smooth animations
+- Features:
+  - Blog banner with parallax effect
+  - Blog cards with image, date, title, and excerpt
+  - Lightbox with full blog content
+  - Dark mode toggle
+  - Responsive navigation
+  - Social media integration
+  - Search functionality
+  - Category filtering
+  - Pagination with "Load More" button
+- Recent updates:
+  - Fixed close icon alignment in dark mode
+  - Improved lightbox accessibility
+  - Enhanced mobile responsiveness
+  - Optimized image loading
+  - Added smooth transitions
+
+### Contact (contact.html)
+- Contact form with validation
+- Google Maps integration
+- Office locations
+- Contact information
+- Social media links
+- Business hours
+
+## Features
+
+### Global Features
 - Responsive design that works on all devices
-- Dark/Light mode toggle
-- Interactive hero section with Swiper.js
+- Dark mode toggle with system preference detection
+- Smooth animations and transitions
 - Modern and clean UI design
-- Animated statistics and counters
-- Portfolio showcase
-- Blog section
-- Contact form
-- Service cards with hover effects
-- Smooth scrolling and transitions
+- Cross-browser compatibility
 
-## 📁 Project Structure
+### Home Page
+- Hero section with animated text
+- Services showcase
+- Portfolio preview
+- Client testimonials
+- Call-to-action sections
 
-```
-├── index.html          # Main homepage
-├── about.html          # About page
-├── portfolio.html      # Portfolio showcase
-├── blog.html          # Blog section
-├── contact.html       # Contact page
-├── styles.css         # Main stylesheet
-├── script.js          # JavaScript functionality
-└── assets/           # Image assets
-```
+### About Page
+- Company overview
+- Team section with member cards
+- Work culture section with image carousel
+- Mission and vision statements
+- Company values
 
-## 🛠️ Technologies Used
+### Portfolio Page
+- Filterable project grid
+- Project details lightbox
+- Category-based filtering
+- Responsive image gallery
+- Project case studies
 
+### Blog Page
+- Blog post grid with load more functionality
+- 24 detailed blog posts about digital marketing
+- Interactive lightbox for reading full posts
+- Dark mode support
+- Responsive design
+- Features:
+  - Load more button (4 posts at a time)
+  - Smooth animations for new posts
+  - Lightbox with:
+    - Close button
+    - Click outside to close
+    - Escape key to close
+    - Scrollable content
+    - Image preview
+    - Full post content
+  - Responsive images
+  - Date and category display
+  - Read more links
+
+### Contact Page
+- Contact form with validation
+- Google Maps integration
+- Office location information
+- Social media links
+- Business hours
+
+## Technologies Used
 - HTML5
-- CSS3
-- JavaScript
+- CSS3 (with CSS Variables)
+- JavaScript (ES6+)
 - Font Awesome Icons
-- Swiper.js for carousel/slider
 - Google Fonts
-- Unsplash for images
+- Unsplash Images
 
-## 🚀 Getting Started
+## Browser Support
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Opera (latest)
 
-1. Clone the repository:
-```bash
-git clone [repository-url]
-```
+## Setup and Installation
+1. Clone the repository
+2. Open `index.html` in your browser
+3. No build process required - pure HTML, CSS, and JavaScript
 
-2. Open `index.html` in your web browser to view the website.
+## Recent Updates
+- Added 20 new blog posts (total 24)
+- Implemented load more functionality for blog posts
+- Fixed lightbox functionality:
+  - Added close button functionality
+  - Added click outside to close
+  - Added escape key to close
+  - Fixed scroll position reset
+  - Improved mobile responsiveness
+  - Fixed lightbox for initial blog cards
+  - Centralized lightbox open/close functions
+  - Added proper event handling for all blog cards
+- Enhanced blog post animations
+- Added dark mode support for blog page
+- Improved accessibility features
 
-3. To make changes:
-   - Edit HTML files for content structure
-   - Modify `styles.css` for styling
-   - Update `script.js` for functionality
+## Contributing
+Feel free to submit issues and enhancement requests.
 
-## 📱 Responsive Design
-
-The website is fully responsive and optimized for:
-- Desktop computers
-- Tablets
-- Mobile devices
-
-## 🎨 Features in Detail
-
-- **Navigation**: Clean and intuitive navigation with mobile menu support
-- **Hero Section**: Dynamic slider showcasing key services and messages
-- **Services**: Grid layout of services with hover effects
-- **Portfolio**: Showcase of past work with filtering options
-- **Blog**: Latest articles and insights
-- **Contact**: Interactive contact form
-- **Dark Mode**: Toggle between light and dark themes
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 👥 Authors
-
-- Your Name - Initial work
-
-## 🙏 Acknowledgments
-
-- Font Awesome for icons
-- Swiper.js for the slider functionality
-- Unsplash for stock images 
+## License
+This project is licensed under the MIT License - see the LICENSE file for details. 
