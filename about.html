@@ -986,13 +986,15 @@
 
         .footer-grid {
            
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 4rem;
+            align-items: start;
 
         }
 
         .footer-brand {
-            max-width: 300px;
+            max-width: 400px;
         }
 
         .footer-logo {
