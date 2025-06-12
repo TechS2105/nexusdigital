@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Strategy - Nexus Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        /* Dark Mode Variables */
+        :root {
+            --primary-color: #2563eb;
+            --primary-color-rgb: 37, 99, 235;
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --text-color-light: #666666;
+            --card-bg: #ffffff;
+            --card-border: rgba(0, 0, 0, 0.05);
+            --section-bg: #ffffff;
+            --section-bg-alt: #f8f9fa;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --timeline-bg: #f8f9fa;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #3b82f6;
+            --primary-color-rgb: 59, 130, 246;
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --text-color-light: #a3a3a3;
+            --card-bg: #2d2d2d;
+            --card-border: rgba(255, 255, 255, 0.05);
+            --section-bg: #1a1a1a;
+            --section-bg-alt: #242424;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --timeline-bg: #242424;
+        }
+
+        /* Base Styles */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Dark Mode Specific Styles */
+        [data-theme="dark"] .strategy-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+                        url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center fixed;
+        }
+
+        [data-theme="dark"] .banner-content {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+        }
+
+        [data-theme="dark"] .strategy-section {
+            background: var(--section-bg);
+        }
+
+        [data-theme="dark"] .strategy-section:nth-child(even) {
+            background: var(--section-bg-alt);
+        }
+
+        [data-theme="dark"] .strategy-card {
+            background: var(--card-bg);
+            border-color: var(--card-border);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        [data-theme="dark"] .strategy-card h3 {
+            color: var(--text-color);
+        }
+
+        [data-theme="dark"] .strategy-card p {
+            color: var(--text-color-light);
+        }
+
+        [data-theme="dark"] .section-header h2 {
+            color: var(--text-color);
+        }
+
+        [data-theme="dark"] .section-subtitle {
+            color: var(--text-color-light);
+        }
+
+        [data-theme="dark"] .process-timeline::before {
+            background: linear-gradient(to bottom, var(--primary-color), var(--timeline-bg));
+        }
+
+        [data-theme="dark"] .timeline-content {
+            background: var(--card-bg);
+            box-shadow: 0 15px 35px var(--shadow-color);
+        }
+
+        [data-theme="dark"] .timeline-content h3 {
+            color: var(--text-color);
+        }
+
+        [data-theme="dark"] .timeline-content p {
+            color: var(--text-color-light);
+        }
+
+        [data-theme="dark"] .service-cta {
+            background: linear-gradient(135deg, #1e40af, #1e293b);
+        }
+
+        [data-theme="dark"] .cta-button {
+            background: var(--primary-color);
+            color: #ffffff;
+            border-color: var(--primary-color);
+        }
+
+        [data-theme="dark"] .cta-button:hover {
+            background: transparent;
+            color: #ffffff;
+        }
+
+        /* Dark Mode Toggle Button Styles */
+        .dark-mode-toggle {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+        }
+
+        .dark-mode-toggle:hover {
+            background: var(--card-bg);
+        }
+
+        .dark-mode-toggle .fa-sun {
+            display: none;
+        }
+
+        .dark-mode-toggle .fa-moon {
+            display: block;
+        }
+
+        [data-theme="dark"] .dark-mode-toggle .fa-sun {
+            display: block;
+        }
+
+        [data-theme="dark"] .dark-mode-toggle .fa-moon {
+            display: none;
+        }
+
+        /* Digital Strategy Page Specific Styles */
+        .strategy-banner {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+            padding: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .banner-content {
+            max-width: 900px;
+            padding: 3rem;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .banner-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .banner-content p {
+            font-size: 1.6rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.3s forwards;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .banner-cta {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.6s forwards;
+            margin-top: 2rem;
+        }
+
+        .banner-cta .cta-button {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: inline-block;
+            border: 2px solid var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .banner-cta .cta-button:hover {
+            background: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .strategy-section {
+            padding: 8rem 0;
+            background: #fff;
+            position: relative;
+        }
+
+        .strategy-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            padding: 0 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+            padding: 0 2rem;
+        }
+
+        .strategy-card {
+            background: #fff;
+            padding: 3rem 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .strategy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+
+        .strategy-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .strategy-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .strategy-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .strategy-card:hover i {
+            transform: scale(1.1);
+        }
+
+        .strategy-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .strategy-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .process-timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 2rem;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), #f8f9fa);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 50%;
+            padding: 0 3rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 25px;
+            height: 25px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 0 0 6px rgba(var(--primary-color-rgb), 0.2);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -72px;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -72px;
+            transform: translateY(-50%);
+        }
+
+        .timeline-number {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.4rem;
+            box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.3);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .service-cta {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, var(--primary-color), #2c3e50);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .cta-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .cta-content p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #fff;
+            color: var(--primary-color);
+            padding: 1.2rem 3.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            display: inline-block;
+            border: 2px solid #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .banner-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .banner-content p {
+                font-size: 1.4rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .strategy-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .strategy-banner {
+                height: auto;
+                min-height: 500px;
+                padding: 4rem 1rem;
+            }
+
+            .banner-content {
+                padding: 2rem;
+            }
+
+            .banner-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .banner-content p {
+                font-size: 1.2rem;
+            }
+
+            .strategy-section {
+                padding: 5rem 0;
+            }
+
+            .section-header {
+                margin-bottom: 3rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .process-timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 80px;
+                margin-bottom: 3rem;
+            }
+
+            .timeline-item .timeline-content::before {
+                left: -50px !important;
+            }
+
+            .timeline-content {
+                padding: 2rem;
+            }
+
+            .service-cta {
+                padding: 5rem 0;
+            }
+
+            .cta-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-content p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .banner-content p {
+                font-size: 1.1rem;
+            }
+
+            .strategy-card {
+                padding: 2rem;
+            }
+
+            .timeline-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Dark Mode Specific Styles */
+        [data-theme="dark"] .strategy-banner p,
+        [data-theme="dark"] .strategy-card p,
+        [data-theme="dark"] .timeline-content p,
+        [data-theme="dark"] .section-subtitle,
+        [data-theme="dark"] .cta-content p {
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        [data-theme="dark"] .strategy-card {
+            text-align: center;
+        }
+
+        [data-theme="dark"] .strategy-card i {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        [data-theme="dark"] .timeline-content {
+            text-align: center;
+        }
+
+        [data-theme="dark"] .timeline-number {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <span class="logo-text">Nexus</span>
+                <span class="logo-text-highlight">Digital</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle active">
+                    Services
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="digital-strategy.html" class="dropdown-item active">
+                        <i class="fas fa-chart-line"></i>
+                        Digital Strategy
+                    </a>
+                    <a href="social-media-marketing.html" class="dropdown-item">
+                        <i class="fas fa-bullhorn"></i>
+                        Social Media Marketing
+                    </a>
+                    <a href="seo-optimization.html" class="dropdown-item">
+                        <i class="fas fa-search"></i>
+                        SEO Optimization
+                    </a>
+                    <a href="content-creation.html" class="dropdown-item">
+                        <i class="fas fa-paint-brush"></i>
+                        Content Creation
+                    </a>
+                    <a href="web-development.html" class="dropdown-item">
+                        <i class="fas fa-code"></i>
+                        Web Development
+                    </a>
+                </div>
+            </div>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="nav-actions">
+            <button id="darkModeToggle" class="dark-mode-toggle">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </button>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Strategy Banner Section -->
+    <section class="strategy-banner">
+        <div class="banner-content">
+            <h1>Digital Strategy</h1>
+            <p>Transform your business with data-driven digital strategies that deliver measurable results and drive sustainable growth in the digital landscape.</p>
+            <div class="banner-cta">
+                <a href="#contact" class="cta-button">Start Your Digital Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategy Overview Section -->
+    <section class="strategy-section" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Strategic Digital Solutions</h2>
+                <p class="section-subtitle">We help businesses navigate the complex digital landscape with confidence and achieve their growth objectives.</p>
+            </div>
+            <div class="strategy-grid">
+                <div class="strategy-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Market Analysis</h3>
+                    <p>Comprehensive analysis of market trends, competitor strategies, and consumer behavior to identify opportunities and threats.</p>
+                </div>
+                <div class="strategy-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Strategy Development</h3>
+                    <p>Customized digital strategies aligned with your business goals, market position, and target audience.</p>
+                </div>
+                <div class="strategy-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-tasks"></i>
+                    <h3>Implementation Planning</h3>
+                    <p>Detailed roadmaps and action plans for executing your digital strategy effectively and efficiently.</p>
+                </div>
+                <div class="strategy-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Performance Tracking</h3>
+                    <p>Comprehensive analytics and reporting to measure success and optimize your digital strategy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline Section -->
+    <section class="strategy-section" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Our Strategic Process</h2>
+                <p class="section-subtitle">A proven methodology for developing and implementing successful digital strategies</p>
+            </div>
+            <div class="process-timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-number">1</div>
+                        <h3>Discovery & Analysis</h3>
+                        <p>We begin by conducting a thorough analysis of your business, goals, current digital presence, and market position to identify opportunities and challenges.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <div class="timeline-number">2</div>
+                        <h3>Strategy Development</h3>
+                        <p>Based on our analysis, we create a tailored digital strategy that aligns with your business objectives and market opportunities.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-number">3</div>
+                        <h3>Implementation</h3>
+                        <p>We execute the strategy with clear timelines, milestones, and deliverables, ensuring smooth implementation across all digital channels.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <div class="timeline-number">4</div>
+                        <h3>Optimization</h3>
+                        <p>Continuous monitoring, analysis, and refinement of your digital strategy to ensure optimal performance and ROI.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="service-cta" data-aos="fade-up">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Digital Presence?</h2>
+                <p>Let's create a digital strategy that drives your business forward</p>
+                <a href="contact.html" class="cta-button">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="container" style="padding: 0 5rem;">
+                <div class="footer-grid">
+                    <!-- Company Info -->
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <span class="logo-text">Nexus</span>
+                            <span class="logo-text-highlight">Digital</span>
+                        </div>
+                        <p class="brand-description">Transforming businesses through innovative digital solutions and strategic marketing approaches.</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Instagram" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="YouTube" class="social-link"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-menu">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="portfolio.html">Portfolio</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Services -->
+                    <div class="footer-links">
+                        <h4>Our Services</h4>
+                        <ul class="footer-menu">
+                            <li><a href="digital-strategy.html">Digital Strategy</a></li>
+                            <li><a href="social-media-marketing.html">Social Media Marketing</a></li>
+                            <li><a href="seo-optimization.html">SEO Optimization</a></li>
+                            <li><a href="content-creation.html">Content Creation</a></li>
+                            <li><a href="web-development.html">Web Development</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="footer-contact">
+                        <h4>Contact Us</h4>
+                        <ul class="contact-list">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>123 Business Avenue, Suite 100<br>New York, NY 10001</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span>+1 (234) 567-8900</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span>info@nexusdigital.com</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container" style="padding: 0 5rem;">
+                <div class="footer-bottom-content">
+                    <p class="copyright">&copy; 2024 Nexus Digital. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Dark Mode Toggle Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            // Check for saved theme preference or use system preference
+            const currentTheme = localStorage.getItem('theme') || 
+                               (prefersDarkScheme.matches ? 'dark' : 'light');
+            
+            // Apply the theme
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            // Toggle theme function
+            function toggleTheme() {
+                const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' 
+                    ? 'light' 
+                    : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            }
+            
+            // Add click event listener
+            darkModeToggle.addEventListener('click', toggleTheme);
+            
+            // Listen for system theme changes
+            prefersDarkScheme.addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    document.documentElement.setAttribute('data-theme', 
+                        e.matches ? 'dark' : 'light'
+                    );
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
