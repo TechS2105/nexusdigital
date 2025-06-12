@@ -6,6 +6,852 @@
     <title>Web Development - Nexus Digital</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        /* Web Development Page Specific Styles */
+        .web-banner {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+            padding: 2rem;
+            margin-bottom: 0;
+        }
+
+        .banner-content {
+            max-width: 900px;
+            padding: 3rem;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transform: translateY(30px);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .banner-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            background: linear-gradient(45deg, #fff, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 3s ease infinite;
+        }
+
+        .banner-content p {
+            font-size: 1.6rem;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .banner-cta {
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .banner-cta .cta-button {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: inline-block;
+            border: 2px solid var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-cta .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .banner-cta .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .banner-cta .cta-button:hover {
+            background: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .web-section {
+            padding: 8rem 0;
+            background: #fff;
+            position: relative;
+        }
+
+        .web-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            padding: 0 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .web-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            padding: 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card i {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+            background: linear-gradient(45deg, var(--primary-color), #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-card:hover i {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .dev-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            padding: 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .dev-service-card {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dev-service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .dev-service-card i {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .dev-service-card:hover i {
+            transform: scale(1.1);
+        }
+
+        .dev-service-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .service-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .service-list li {
+            padding: 0.8rem 0;
+            color: #666;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-list li:hover {
+            transform: translateX(10px);
+            color: var(--primary-color);
+        }
+
+        .service-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .service-list li:hover::before {
+            transform: translateX(5px);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            padding: 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .tech-category {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .tech-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .tech-category h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .tech-category h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .tech-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tech-list li {
+            padding: 0.8rem 0;
+            color: #666;
+            font-size: 1.1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tech-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tech-list li:hover {
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .process-timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 2rem;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), #f8f9fa);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 50%;
+            padding: 0 3rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 25px;
+            height: 25px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 0 0 6px rgba(var(--primary-color-rgb), 0.2);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -72px;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -72px;
+            transform: translateY(-50%);
+        }
+
+        .timeline-number {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.4rem;
+            box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.3);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .service-cta {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, var(--primary-color), #4facfe3e);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .cta-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .cta-content p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #fff;
+            color: var(--primary-color);
+            padding: 1.2rem 3.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            display: inline-block;
+            border: 2px solid #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Dark Mode Styles */
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --card-bg: #2d2d2d;
+            --card-border: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --dropdown-bg: #1A1A1A;
+            --dropdown-hover: #3d3d3d;
+        }
+
+        [data-theme="dark"] .web-section {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="dark"] .web-section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="dark"] .section-header h2 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .section-subtitle {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .feature-card,
+        [data-theme="dark"] .dev-service-card,
+        [data-theme="dark"] .tech-category,
+        [data-theme="dark"] .timeline-content {
+            background: var(--card-bg);
+            border-color: var(--card-border);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        [data-theme="dark"] .feature-card h3,
+        [data-theme="dark"] .dev-service-card h3,
+        [data-theme="dark"] .tech-category h3,
+        [data-theme="dark"] .timeline-content h3 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .feature-card p,
+        [data-theme="dark"] .dev-service-card p,
+        [data-theme="dark"] .tech-category p,
+        [data-theme="dark"] .timeline-content p,
+        [data-theme="dark"] .service-list li,
+        [data-theme="dark"] .tech-list li {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .process-timeline::before {
+            background: linear-gradient(to bottom, var(--primary-color), var(--bg-secondary));
+        }
+
+        /* Center align paragraphs in dark mode */
+        [data-theme="dark"] .banner-content p,
+        [data-theme="dark"] .feature-card p,
+        [data-theme="dark"] .timeline-content p,
+        [data-theme="dark"] .section-subtitle,
+        [data-theme="dark"] .cta-content p,
+        [data-theme="dark"] .dev-service-card p {
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        [data-theme="dark"] .feature-card i,
+        [data-theme="dark"] .dev-service-card i {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        [data-theme="dark"] .timeline-number {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Dark Mode Navigation Styles */
+        [data-theme="dark"] .nav-links a {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        [data-theme="dark"] .dropdown-menu {
+            background: var(--dropdown-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        [data-theme="dark"] .dropdown-item {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .dropdown-item:hover {
+            background: var(--dropdown-hover);
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .dropdown-item.active {
+            background: var(--dropdown-hover);
+            color: var(--primary-color);
+        }
+
+        [data-theme="dark"] .dropdown-item i {
+            color: blue;
+        }
+
+        [data-theme="dark"] .dropdown-item:hover i {
+            color: var(--primary-color);
+        }
+
+        [data-theme="dark"] .dropdown-toggle::after {
+            border-top-color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .dropdown-toggle:hover::after {
+            border-top-color: var(--primary-color);
+        }
+
+        /* Dark Mode Toggle Button Styles */
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .dark-mode-toggle i {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            transition: all 0.5s ease;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .dark-mode-toggle .fa-sun {
+            opacity: 0;
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        .dark-mode-toggle .fa-moon {
+            opacity: 1;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        [data-theme="dark"] .dark-mode-toggle .fa-sun {
+            opacity: 1;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        [data-theme="dark"] .dark-mode-toggle .fa-moon {
+            opacity: 0;
+            transform: translate(-50%, -50%) rotate(-90deg);
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: rgba(128, 128, 128, 0.1);
+        }
+
+        /* Ensure nav-actions maintains center alignment */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .banner-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .banner-content p {
+                font-size: 1.4rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .web-features-grid,
+            .dev-services-grid,
+            .tech-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .web-banner {
+                height: auto;
+                min-height: 500px;
+                padding: 4rem 1rem;
+            }
+
+            .banner-content {
+                padding: 2rem;
+            }
+
+            .banner-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .banner-content p {
+                font-size: 1.2rem;
+            }
+
+            .web-section {
+                padding: 5rem 0;
+            }
+
+            .section-header {
+                margin-bottom: 3rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .process-timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 80px;
+                margin-bottom: 3rem;
+            }
+
+            .timeline-item .timeline-content::before {
+                left: -50px !important;
+            }
+
+            .timeline-content {
+                padding: 2rem;
+            }
+
+            .service-cta {
+                padding: 5rem 0;
+            }
+
+            .cta-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-content p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .banner-content p {
+                font-size: 1.1rem;
+            }
+
+            .feature-card,
+            .dev-service-card,
+            .tech-category {
+                padding: 2rem;
+            }
+
+            .timeline-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -52,7 +898,7 @@
             <a href="contact.html">Contact</a>
         </div>
         <div class="nav-actions">
-            <button id="darkModeToggle" class="dark-mode-toggle">
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
                 <i class="fas fa-sun"></i>
             </button>
@@ -62,57 +908,58 @@
         </div>
     </nav>
 
-    <!-- Service Hero Section -->
-    <section class="service-hero">
-        <div class="container">
-            <div class="service-hero-content">
-                <h1>Web Development</h1>
-                <p>Create powerful, responsive websites that drive business growth</p>
+    <!-- Web Development Banner Section -->
+    <section class="web-banner">
+        <div class="banner-content">
+            <h1>Web Development</h1>
+            <p>Transform your digital presence with modern, responsive websites and powerful web applications</p>
+            <div class="banner-cta">
+                <a href="#contact" class="cta-button">Start Building</a>
             </div>
         </div>
     </section>
 
-    <!-- Service Overview -->
-    <section class="service-overview">
+    <!-- Web Features Section -->
+    <section class="web-section" data-aos="fade-up">
         <div class="container">
-            <div class="service-content">
-                <div class="service-text">
-                    <h2>Custom Web Solutions</h2>
-                    <p>Our web development service delivers modern, responsive websites and web applications that engage users and drive business results.</p>
-                    
-                    <div class="service-features-grid">
-                        <div class="feature-card">
-                            <i class="fas fa-laptop-code"></i>
-                            <h3>Custom Development</h3>
-                            <p>Tailored solutions for your unique needs</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-mobile-alt"></i>
-                            <h3>Responsive Design</h3>
-                            <p>Websites that work on all devices</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-shopping-cart"></i>
-                            <h3>E-commerce Solutions</h3>
-                            <p>Powerful online stores that convert</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-cogs"></i>
-                            <h3>CMS Development</h3>
-                            <p>Easy-to-manage content systems</p>
-                        </div>
-                    </div>
+            <div class="section-header">
+                <h2>Custom Web Solutions</h2>
+                <p class="section-subtitle">We build modern, responsive websites and web applications that engage users and drive business results</p>
+            </div>
+            <div class="web-features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Custom Development</h3>
+                    <p>Tailored web solutions designed to meet your unique business requirements and goals.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Responsive Design</h3>
+                    <p>Websites that deliver exceptional user experience across all devices and screen sizes.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>E-commerce Solutions</h3>
+                    <p>Powerful online stores with secure payment gateways and seamless shopping experiences.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-cogs"></i>
+                    <h3>CMS Development</h3>
+                    <p>User-friendly content management systems that make website updates effortless.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Development Services Section -->
-    <section class="dev-services">
+    <section class="web-section" data-aos="fade-up">
         <div class="container">
-            <h2>Our Development Services</h2>
+            <div class="section-header">
+                <h2>Our Development Services</h2>
+                <p class="section-subtitle">Comprehensive web development solutions tailored to your business needs</p>
+            </div>
             <div class="dev-services-grid">
-                <div class="dev-service-card">
+                <div class="dev-service-card" data-aos="fade-up" data-aos-delay="100">
                     <i class="fas fa-globe"></i>
                     <h3>Website Development</h3>
                     <ul class="service-list">
@@ -120,9 +967,10 @@
                         <li>Responsive Development</li>
                         <li>WordPress Development</li>
                         <li>Website Maintenance</li>
+                        <li>Performance Optimization</li>
                     </ul>
                 </div>
-                <div class="dev-service-card">
+                <div class="dev-service-card" data-aos="fade-up" data-aos-delay="200">
                     <i class="fas fa-store"></i>
                     <h3>E-commerce Solutions</h3>
                     <ul class="service-list">
@@ -130,9 +978,10 @@
                         <li>Shopify Development</li>
                         <li>WooCommerce Solutions</li>
                         <li>Payment Gateway Integration</li>
+                        <li>Inventory Management</li>
                     </ul>
                 </div>
-                <div class="dev-service-card">
+                <div class="dev-service-card" data-aos="fade-up" data-aos-delay="300">
                     <i class="fas fa-window-restore"></i>
                     <h3>Web Applications</h3>
                     <ul class="service-list">
@@ -140,6 +989,7 @@
                         <li>Progressive Web Apps</li>
                         <li>API Development</li>
                         <li>Database Integration</li>
+                        <li>Cloud Solutions</li>
                     </ul>
                 </div>
             </div>
@@ -147,11 +997,14 @@
     </section>
 
     <!-- Technologies Section -->
-    <section class="technologies">
+    <section class="web-section" data-aos="fade-up">
         <div class="container">
-            <h2>Technologies We Use</h2>
+            <div class="section-header">
+                <h2>Technologies We Use</h2>
+                <p class="section-subtitle">Modern tech stack for building powerful and scalable web solutions</p>
+            </div>
             <div class="tech-grid">
-                <div class="tech-category">
+                <div class="tech-category" data-aos="fade-up" data-aos-delay="100">
                     <h3>Frontend</h3>
                     <ul class="tech-list">
                         <li>HTML5 & CSS3</li>
@@ -161,7 +1014,7 @@
                         <li>Angular</li>
                     </ul>
                 </div>
-                <div class="tech-category">
+                <div class="tech-category" data-aos="fade-up" data-aos-delay="200">
                     <h3>Backend</h3>
                     <ul class="tech-list">
                         <li>Node.js</li>
@@ -171,7 +1024,7 @@
                         <li>Java</li>
                     </ul>
                 </div>
-                <div class="tech-category">
+                <div class="tech-category" data-aos="fade-up" data-aos-delay="300">
                     <h3>Databases</h3>
                     <ul class="tech-list">
                         <li>MySQL</li>
@@ -181,7 +1034,7 @@
                         <li>Firebase</li>
                     </ul>
                 </div>
-                <div class="tech-category">
+                <div class="tech-category" data-aos="fade-up" data-aos-delay="400">
                     <h3>CMS & Platforms</h3>
                     <ul class="tech-list">
                         <li>WordPress</li>
@@ -195,41 +1048,52 @@
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section class="service-process">
+    <!-- Process Timeline Section -->
+    <section class="web-section" data-aos="fade-up">
         <div class="container">
-            <h2>Our Development Process</h2>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3>Discovery & Planning</h3>
-                    <p>Understanding requirements and project scope</p>
+            <div class="section-header">
+                <h2>Our Development Process</h2>
+                <p class="section-subtitle">A proven methodology for delivering successful web projects</p>
+            </div>
+            <div class="process-timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-number">1</div>
+                        <h3>Discovery & Planning</h3>
+                        <p>We analyze your requirements and create a detailed project roadmap aligned with your business goals.</p>
+                    </div>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3>Design & Prototyping</h3>
-                    <p>Creating wireframes and design mockups</p>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <div class="timeline-number">2</div>
+                        <h3>Design & Prototyping</h3>
+                        <p>Our team creates wireframes and design mockups to visualize the solution before development begins.</p>
+                    </div>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3>Development</h3>
-                    <p>Building and testing the solution</p>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-number">3</div>
+                        <h3>Development</h3>
+                        <p>We build your solution using modern technologies and best practices, with regular testing and quality checks.</p>
+                    </div>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <h3>Launch & Support</h3>
-                    <p>Deploying and maintaining the project</p>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <div class="timeline-number">4</div>
+                        <h3>Launch & Support</h3>
+                        <p>We deploy your project and provide ongoing maintenance and support to ensure optimal performance.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="service-cta">
+    <section class="service-cta" data-aos="fade-up">
         <div class="container">
             <div class="cta-content">
                 <h2>Ready to Build Your Web Solution?</h2>
-                <p>Let's create a powerful website or web application for your business</p>
+                <p>Let's create a powerful website or web application that drives your business forward</p>
                 <a href="contact.html" class="cta-button">Get Started</a>
             </div>
         </div>
@@ -320,6 +1184,50 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Dark Mode Toggle Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            // Check for saved theme preference or use system preference
+            const currentTheme = localStorage.getItem('theme') || 
+                               (prefersDarkScheme.matches ? 'dark' : 'light');
+            
+            // Apply the theme
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            // Toggle theme function
+            function toggleTheme() {
+                const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' 
+                    ? 'light' 
+                    : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            }
+            
+            // Add click event listener
+            darkModeToggle.addEventListener('click', toggleTheme);
+            
+            // Listen for system theme changes
+            prefersDarkScheme.addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    document.documentElement.setAttribute('data-theme', 
+                        e.matches ? 'dark' : 'light'
+                    );
+                }
+            });
+        });
+    </script>
 </body>
 </html> 
