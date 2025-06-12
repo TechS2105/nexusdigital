@@ -321,6 +321,20 @@ body {
     opacity: 1;
 }
 
+.portfolio-overlay > a{
+
+    background-color: snow;
+    color: blue;
+    display: inline-flex;
+    width: 150px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-top: 20px;
+
+}
+
 .view-all {
     text-align: center;
     margin-top: 2rem;
@@ -2096,4 +2110,101 @@ h2 {
 
 .portfolio-grid .portfolio-item:nth-child(3) {
     transition-delay: 0.4s;
+}
+
+/* Navigation Dropdown Styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.dropdown-toggle i {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-toggle i {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background: snow;
+    min-width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    padding: 0.5rem 0;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item i {
+    font-size: 1rem;
+    color: var(--primary-color);
+    width: 20px;
+    text-align: center;
+}
+
+.dropdown-item:hover {
+    background: var(--hover-color);
+    color: var(--primary-color);
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .dropdown-menu {
+    background: var(--dark-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .dropdown-item:hover {
+    background: var(--dark-hover);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        display: none;
+        padding-left: 1rem;
+    }
+
+    .dropdown.active .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-toggle i {
+        margin-left: auto;
+    }
 }
