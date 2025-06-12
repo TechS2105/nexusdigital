@@ -829,7 +829,7 @@ body {
 }
 
 [data-theme="dark"] .nav-links a {
-    color: var(--dark-heading) !important;
+    /* color: var(--dark-heading) !important; */
     font-weight: 600;
 }
 

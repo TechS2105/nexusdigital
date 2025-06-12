@@ -6,6 +6,703 @@
     <title>Social Media Marketing - Nexus Digital</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        /* Social Media Marketing Page Specific Styles */
+        .social-banner {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+            padding: 2rem;
+            margin-bottom: 0;
+        }
+
+        .banner-content {
+            max-width: 900px;
+            padding: 3rem;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transform: translateY(30px);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .banner-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            background: linear-gradient(45deg, #fff, #a8b2ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 3s ease infinite;
+        }
+
+        .banner-content p {
+            font-size: 1.6rem;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .banner-cta {
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .banner-cta .cta-button {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: inline-block;
+            border: 2px solid var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-cta .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .banner-cta .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .banner-cta .cta-button:hover {
+            background: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-section {
+            padding: 8rem 0;
+            background: #fff;
+            position: relative;
+        }
+
+        .social-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            padding: 0 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            padding: 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .platform-card {
+            background: #fff;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .platform-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .platform-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .platform-card i {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+            background: linear-gradient(45deg, var(--primary-color), #a8b2ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .platform-card:hover i {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .platform-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .platform-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .process-timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 2rem;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), #f8f9fa);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 50%;
+            padding: 0 3rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 25px;
+            height: 25px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 0 0 6px rgba(var(--primary-color-rgb), 0.2);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -72px;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -72px;
+            transform: translateY(-50%);
+        }
+
+        .timeline-number {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.4rem;
+            box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.3);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .service-cta {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, var(--primary-color), #2c3e50);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .cta-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .cta-content p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #fff;
+            color: var(--primary-color);
+            padding: 1.2rem 3.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            display: inline-block;
+            border: 2px solid #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .banner-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .banner-content p {
+                font-size: 1.4rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .platforms-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .social-banner {
+                height: auto;
+                min-height: 500px;
+                padding: 4rem 1rem;
+            }
+
+            .banner-content {
+                padding: 2rem;
+            }
+
+            .banner-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .banner-content p {
+                font-size: 1.2rem;
+            }
+
+            .social-section {
+                padding: 5rem 0;
+            }
+
+            .section-header {
+                margin-bottom: 3rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .process-timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 80px;
+                margin-bottom: 3rem;
+            }
+
+            .timeline-item .timeline-content::before {
+                left: -50px !important;
+            }
+
+            .timeline-content {
+                padding: 2rem;
+            }
+
+            .service-cta {
+                padding: 5rem 0;
+            }
+
+            .cta-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-content p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .banner-content p {
+                font-size: 1.1rem;
+            }
+
+            .platform-card {
+                padding: 2rem;
+            }
+
+            .timeline-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Dark Mode Styles */
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --card-bg: #2d2d2d;
+            --card-border: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --dropdown-bg: #2d2d2d;
+            --dropdown-hover: #3d3d3d;
+        }
+
+        /* Dark Mode Navigation Styles */
+        [data-theme="dark"] .nav-links a {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        [data-theme="dark"] .dropdown-menu {
+            background: #1A1A1A;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        [data-theme="dark"] .dropdown-item {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .dropdown-item:hover {
+            background: var(--dropdown-hover);
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .dropdown-item.active {
+            background: var(--dropdown-hover);
+            color: var(--primary-color);
+        }
+
+        [data-theme="dark"] .dropdown-item i {
+            color: blue;
+        }
+
+        [data-theme="dark"] .dropdown-item:hover i {
+            color: var(--primary-color);
+        }
+
+        [data-theme="dark"] .dropdown-toggle::after {
+            border-top-color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .dropdown-toggle:hover::after {
+            border-top-color: var(--primary-color);
+        }
+
+        /* Center align paragraphs in dark mode */
+        [data-theme="dark"] .banner-content p,
+        [data-theme="dark"] .platform-card p,
+        [data-theme="dark"] .timeline-content p,
+        [data-theme="dark"] .section-subtitle,
+        [data-theme="dark"] .cta-content p {
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        [data-theme="dark"] .platform-card i {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        [data-theme="dark"] .timeline-number {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        [data-theme="dark"] .social-section {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="dark"] .social-section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="dark"] .section-header h2 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .platform-card {
+            background: var(--card-bg);
+            border-color: var(--card-border);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        [data-theme="dark"] .platform-card h3 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .platform-card p {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .timeline-content {
+            background: var(--card-bg);
+            box-shadow: 0 15px 35px var(--shadow-color);
+        }
+
+        [data-theme="dark"] .timeline-content h3 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .timeline-content p {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .process-timeline::before {
+            background: linear-gradient(to bottom, var(--primary-color), var(--bg-secondary));
+        }
+
+        /* Dark Mode Toggle Button Styles */
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .dark-mode-toggle i {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            transition: all 0.5s ease;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .dark-mode-toggle .fa-sun {
+            opacity: 0;
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        .dark-mode-toggle .fa-moon {
+            opacity: 1;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        [data-theme="dark"] .dark-mode-toggle .fa-sun {
+            opacity: 1;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        [data-theme="dark"] .dark-mode-toggle .fa-moon {
+            opacity: 0;
+            transform: translate(-50%, -50%) rotate(-90deg);
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: rgba(128, 128, 128, 0.1);
+        }
+
+        /* Ensure nav-actions maintains center alignment */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -52,7 +749,7 @@
             <a href="contact.html">Contact</a>
         </div>
         <div class="nav-actions">
-            <button id="darkModeToggle" class="dark-mode-toggle">
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
                 <i class="fas fa-sun"></i>
             </button>
@@ -62,125 +759,115 @@
         </div>
     </nav>
 
-    <!-- Service Hero Section -->
-    <section class="service-hero">
-        <div class="container">
-            <div class="service-hero-content">
-                <h1>Social Media Marketing</h1>
-                <p>Build meaningful connections and grow your brand through strategic social media marketing</p>
+    <!-- Social Media Banner Section -->
+    <section class="social-banner">
+        <div class="banner-content">
+            <h1>Social Media Marketing</h1>
+            <p>Transform your brand's digital presence with strategic social media campaigns that engage, inspire, and drive meaningful connections with your audience.</p>
+            <div class="banner-cta">
+                <a href="#contact" class="cta-button">Start Your Social Journey</a>
             </div>
         </div>
     </section>
 
-    <!-- Service Overview -->
-    <section class="service-overview">
+    <!-- Platforms Section -->
+    <section class="social-section" data-aos="fade-up">
         <div class="container">
-            <div class="service-content">
-                <div class="service-text">
-                    <h2>Engage Your Audience</h2>
-                    <p>Our social media marketing service helps businesses build a strong online presence, engage with their audience, and drive meaningful results through strategic social media campaigns.</p>
-                    
-                    <div class="service-features-grid">
-                        <div class="feature-card">
-                            <i class="fas fa-pencil-alt"></i>
-                            <h3>Content Creation</h3>
-                            <p>Engaging and shareable content tailored for each platform</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-users"></i>
-                            <h3>Community Management</h3>
-                            <p>Active engagement and relationship building with your audience</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-ad"></i>
-                            <h3>Paid Advertising</h3>
-                            <p>Strategic social media ads to reach your target audience</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-chart-pie"></i>
-                            <h3>Analytics & Reporting</h3>
-                            <p>Detailed insights and performance tracking</p>
-                        </div>
+            <div class="section-header">
+                <h2>Platforms We Master</h2>
+                <p class="section-subtitle">We help you build a strong presence across all major social media platforms, creating engaging content that resonates with your audience.</p>
+            </div>
+            <div class="platforms-grid">
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fab fa-facebook"></i>
+                    <h3>Facebook</h3>
+                    <p>Build brand awareness and engage with your community through targeted campaigns and meaningful content.</p>
+                </div>
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fab fa-instagram"></i>
+                    <h3>Instagram</h3>
+                    <p>Create visually stunning content and leverage influencer partnerships to grow your brand presence.</p>
+                </div>
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>LinkedIn</h3>
+                    <p>Establish thought leadership and drive B2B connections through professional networking.</p>
+                </div>
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fab fa-twitter"></i>
+                    <h3>Twitter</h3>
+                    <p>Engage in real-time conversations and build brand personality through timely, relevant content.</p>
+                </div>
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fab fa-tiktok"></i>
+                    <h3>TikTok</h3>
+                    <p>Create viral content and participate in trending challenges to reach younger audiences.</p>
+                </div>
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="600">
+                    <i class="fab fa-youtube"></i>
+                    <h3>YouTube</h3>
+                    <p>Develop engaging video content and build a loyal subscriber base through channel management.</p>
+                </div>
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="700">
+                    <i class="fab fa-pinterest"></i>
+                    <h3>Pinterest</h3>
+                    <p>Drive traffic and sales through visually appealing pins and strategic board management for your brand.</p>
+                </div>
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="800">
+                    <i class="fab fa-snapchat"></i>
+                    <h3>Snapchat</h3>
+                    <p>Connect with younger demographics through engaging AR filters, stories, and location-based marketing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline Section -->
+    <section class="social-section" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Social Media Process</h2>
+                <p class="section-subtitle">A proven methodology for developing and implementing successful social media strategies</p>
+            </div>
+            <div class="process-timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-number">1</div>
+                        <h3>Strategy Development</h3>
+                        <p>We analyze your brand, audience, and goals to create a customized social media strategy that aligns with your business objectives.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <div class="timeline-number">2</div>
+                        <h3>Content Planning</h3>
+                        <p>We develop engaging content calendars and campaigns that resonate with your target audience across all platforms.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-number">3</div>
+                        <h3>Implementation</h3>
+                        <p>Our team executes your social media campaigns with precision, managing daily activities and community engagement.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <div class="timeline-number">4</div>
+                        <h3>Analysis & Optimization</h3>
+                        <p>We continuously monitor performance metrics and refine strategies to maximize your social media ROI.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Platforms Section -->
-    <section class="social-platforms">
-        <div class="container">
-            <h2>Platforms We Manage</h2>
-            <div class="platforms-grid">
-                <div class="platform-card">
-                    <i class="fab fa-facebook"></i>
-                    <h3>Facebook</h3>
-                    <p>Build brand awareness and engage with your community</p>
-                </div>
-                <div class="platform-card">
-                    <i class="fab fa-instagram"></i>
-                    <h3>Instagram</h3>
-                    <p>Visual storytelling and influencer partnerships</p>
-                </div>
-                <div class="platform-card">
-                    <i class="fab fa-linkedin"></i>
-                    <h3>LinkedIn</h3>
-                    <p>Professional networking and B2B marketing</p>
-                </div>
-                <div class="platform-card">
-                    <i class="fab fa-twitter"></i>
-                    <h3>Twitter</h3>
-                    <p>Real-time engagement and brand conversations</p>
-                </div>
-                <div class="platform-card">
-                    <i class="fab fa-tiktok"></i>
-                    <h3>TikTok</h3>
-                    <p>Viral content and trend participation</p>
-                </div>
-                <div class="platform-card">
-                    <i class="fab fa-youtube"></i>
-                    <h3>YouTube</h3>
-                    <p>Video content and channel management</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="service-process">
-        <div class="container">
-            <h2>Our Social Media Process</h2>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3>Strategy Development</h3>
-                    <p>Creating a customized social media strategy for your brand</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3>Content Planning</h3>
-                    <p>Developing engaging content calendars and campaigns</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3>Implementation</h3>
-                    <p>Executing campaigns and managing daily activities</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <h3>Analysis & Optimization</h3>
-                    <p>Monitoring performance and refining strategies</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- CTA Section -->
-    <section class="service-cta">
+    <section class="service-cta" data-aos="fade-up">
         <div class="container">
             <div class="cta-content">
-                <h2>Ready to Grow Your Social Media Presence?</h2>
-                <p>Let's create engaging social media campaigns that connect with your audience</p>
+                <h2>Ready to Transform Your Social Media Presence?</h2>
+                <p>Let's create engaging social media campaigns that connect with your audience and drive real business results</p>
                 <a href="contact.html" class="cta-button">Get Started</a>
             </div>
         </div>
@@ -271,6 +958,50 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Dark Mode Toggle Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            // Check for saved theme preference or use system preference
+            const currentTheme = localStorage.getItem('theme') || 
+                               (prefersDarkScheme.matches ? 'dark' : 'light');
+            
+            // Apply the theme
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            // Toggle theme function
+            function toggleTheme() {
+                const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' 
+                    ? 'light' 
+                    : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            }
+            
+            // Add click event listener
+            darkModeToggle.addEventListener('click', toggleTheme);
+            
+            // Listen for system theme changes
+            prefersDarkScheme.addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    document.documentElement.setAttribute('data-theme', 
+                        e.matches ? 'dark' : 'light'
+                    );
+                }
+            });
+        });
+
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
 </body>
 </html> 
