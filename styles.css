@@ -1011,10 +1011,11 @@ body {
 }
 
 [data-theme="dark"] .brand-item {
-    background: var(--dark-text-secondary);
+    background: snow;
     padding: 15px;
     border-radius: 8px;
     border: none;
+    margin-right: 20px;
 }
 
 /* Dark Mode Engagement Stats */
