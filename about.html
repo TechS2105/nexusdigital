@@ -1124,10 +1124,217 @@
                 align-items: center;
             }
         }
+
+        /* Mobile Navbar Styles */
+        .mobile-navbar {
+            display: none;
+            width: 100%;
+            background: var(--light-bg);
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .mobile-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .mobile-logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-logo .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .mobile-logo .logo-text-highlight {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-nav-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: var(--light-bg);
+            padding: 1rem;
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .mobile-nav-link i {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link.active {
+            background: rgba(58, 122, 254, 0.1);
+            color: var(--primary-color);
+        }
+
+        .mobile-dropdown {
+            position: relative;
+        }
+
+        .mobile-dropdown-toggle {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-dropdown-toggle:hover {
+            background: rgba(58, 122, 254, 0.1);
+            color: var(--primary-color);
+        }
+
+        .mobile-dropdown-menu {
+            display: none;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+        }
+
+        .mobile-dropdown-menu.active {
+            display: block;
+        }
+
+        .mobile-dropdown-item {
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-dropdown-item:hover {
+            background: rgba(58, 122, 254, 0.1);
+            color: var(--primary-color);
+        }
+
+        .mobile-dropdown-item i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Dark mode styles for mobile navbar */
+        [data-theme="dark"] .mobile-navbar {
+            background: var(--light-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .mobile-nav-menu {
+            background: var(--light-bg);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hide main navbar in mobile view */
+        @media (max-width: 768px) {
+            .navbar {
+                display: none;
+            }
+
+            .mobile-navbar {
+                display: block;
+            }
+
+            .about-hero {
+                margin-top: 70px;
+            }
+        }
+
+        /* Additional mobile responsive styles */
+        @media (max-width: 480px) {
+            .mobile-navbar {
+                padding: 0.8rem;
+            }
+
+            .mobile-logo .logo-text {
+                font-size: 1.3rem;
+            }
+
+            .mobile-nav-link {
+                font-size: 1rem;
+                padding: 0.7rem 0.8rem;
+            }
+
+            .mobile-dropdown-toggle {
+                padding: 0.7rem 0.8rem;
+            }
+
+            .mobile-dropdown-item {
+                padding: 0.7rem 0.8rem 0.7rem 2.2rem;
+                font-size: 0.95rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Main Navigation (hidden in mobile) -->
     <nav class="navbar">
         <div class="logo">
             <a href="index.html">
@@ -1177,6 +1384,76 @@
             </button>
             <div class="menu-btn">
                 <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-navbar">
+        <div class="mobile-nav-container">
+            <div class="mobile-logo">
+                <a href="index.html">
+                    <span class="logo-text">Nexus</span>
+                    <span class="logo-text-highlight">Digital</span>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-nav-menu" id="mobileNavMenu">
+            <div class="mobile-nav-links">
+                <a href="index.html" class="mobile-nav-link">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <a href="about.html" class="mobile-nav-link active">
+                    <i class="fas fa-info-circle"></i>
+                    About
+                </a>
+                <div class="mobile-dropdown">
+                    <div class="mobile-dropdown-toggle" id="mobileServicesToggle">
+                        <span>
+                            <i class="fas fa-cog"></i>
+                            Services
+                        </span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="mobile-dropdown-menu" id="mobileServicesMenu">
+                        <a href="digital-strategy.html" class="mobile-dropdown-item">
+                            <i class="fas fa-chart-line"></i>
+                            Digital Strategy
+                        </a>
+                        <a href="social-media-marketing.html" class="mobile-dropdown-item">
+                            <i class="fas fa-bullhorn"></i>
+                            Social Media Marketing
+                        </a>
+                        <a href="seo-optimization.html" class="mobile-dropdown-item">
+                            <i class="fas fa-search"></i>
+                            SEO Optimization
+                        </a>
+                        <a href="content-creation.html" class="mobile-dropdown-item">
+                            <i class="fas fa-paint-brush"></i>
+                            Content Creation
+                        </a>
+                        <a href="web-development.html" class="mobile-dropdown-item">
+                            <i class="fas fa-code"></i>
+                            Web Development
+                        </a>
+                    </div>
+                </div>
+                <a href="portfolio.html" class="mobile-nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    Portfolio
+                </a>
+                <a href="blog.html" class="mobile-nav-link">
+                    <i class="fas fa-blog"></i>
+                    Blog
+                </a>
+                <a href="contact.html" class="mobile-nav-link">
+                    <i class="fas fa-envelope"></i>
+                    Contact
+                </a>
             </div>
         </div>
     </nav>
@@ -1673,7 +1950,45 @@
             // Add click event listener to the toggle button
             darkModeToggle.addEventListener('click', toggleTheme);
             
-            // Rest of your existing JavaScript code...
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileNavMenu = document.getElementById('mobileNavMenu');
+            const mobileServicesToggle = document.getElementById('mobileServicesToggle');
+            const mobileServicesMenu = document.getElementById('mobileServicesMenu');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileNavMenu.classList.toggle('active');
+                mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+                mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
+            });
+
+            mobileServicesToggle.addEventListener('click', () => {
+                mobileServicesMenu.classList.toggle('active');
+                mobileServicesToggle.querySelector('.fa-chevron-down').style.transform = 
+                    mobileServicesMenu.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileNavMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    mobileNavMenu.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                    mobileServicesMenu.classList.remove('active');
+                    mobileServicesToggle.querySelector('.fa-chevron-down').style.transform = 'rotate(0)';
+                }
+            });
+
+            // Close mobile menu when window is resized above mobile breakpoint
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    mobileNavMenu.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                    mobileServicesMenu.classList.remove('active');
+                    mobileServicesToggle.querySelector('.fa-chevron-down').style.transform = 'rotate(0)';
+                }
+            });
         });
     </script>
 </body>

@@ -358,4 +358,66 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+});
+
+// Mobile Menu Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileNavMenu = document.querySelector('.mobile-nav-menu');
+    const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+    const mobileDarkModeToggle = document.getElementById('mobileDarkModeToggle');
+
+    // Toggle mobile menu
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileNavMenu.classList.toggle('active');
+        });
+    }
+
+    // Toggle mobile dropdowns
+    mobileDropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            const dropdownMenu = this.nextElementSibling;
+            dropdownMenu.classList.toggle('active');
+        });
+    });
+
+    // Mobile dark mode toggle
+    if (mobileDarkModeToggle) {
+        mobileDarkModeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Also update the main dark mode toggle if it exists
+            const mainDarkModeToggle = document.getElementById('darkModeToggle');
+            if (mainDarkModeToggle) {
+                mainDarkModeToggle.classList.toggle('active', newTheme === 'dark');
+            }
+        });
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const isClickInsideMenu = mobileNavMenu.contains(event.target);
+        const isClickOnToggle = mobileMenuToggle.contains(event.target);
+        
+        if (!isClickInsideMenu && !isClickOnToggle && mobileNavMenu.classList.contains('active')) {
+            mobileMenuToggle.classList.remove('active');
+            mobileNavMenu.classList.remove('active');
+        }
+    });
+
+    // Close mobile menu when window is resized above mobile breakpoint
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mobileNavMenu.classList.contains('active')) {
+            mobileMenuToggle.classList.remove('active');
+            mobileNavMenu.classList.remove('active');
+        }
+    });
 }); 

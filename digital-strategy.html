@@ -642,10 +642,223 @@
             left: 50%;
             transform: translateX(-50%);
         }
+
+        /* Mobile Navbar Styles */
+        .mobile-navbar {
+            display: none;
+            width: 100vw;
+            background: var(--light-bg);
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .mobile-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .mobile-logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-logo .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .mobile-logo .logo-text-highlight {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-nav-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100vw;
+            background: var(--light-bg);
+            padding: 1rem;
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-nav-link i {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link.active {
+            background: rgba(58, 122, 254, 0.1);
+            color: var(--primary-color);
+        }
+
+        .mobile-dropdown {
+            position: relative;
+        }
+
+        .mobile-dropdown-toggle {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-dropdown-toggle i:first-child {
+            margin-right: 0.8rem;
+        }
+
+        .mobile-dropdown-toggle:hover {
+            background: rgba(58, 122, 254, 0.1);
+            color: var(--primary-color);
+        }
+
+        .mobile-dropdown-menu {
+            display: none;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .mobile-dropdown-menu.active {
+            display: block;
+        }
+
+        .mobile-dropdown-item {
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .mobile-dropdown-item:hover {
+            background: rgba(58, 122, 254, 0.1);
+            color: var(--primary-color);
+        }
+
+        .mobile-dropdown-item i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Dark mode styles for mobile navbar */
+        [data-theme="dark"] .mobile-navbar {
+            background: var(--light-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .mobile-nav-menu {
+            background: var(--light-bg);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hide main navbar in mobile view */
+        @media (max-width: 768px) {
+            .navbar {
+                display: none;
+            }
+
+            .mobile-navbar {
+                display: block;
+            }
+
+            .strategy-banner {
+                margin-top: 70px;
+            }
+        }
+
+        /* Additional mobile responsive styles */
+        @media (max-width: 480px) {
+            .mobile-navbar {
+                padding: 0.8rem;
+            }
+
+            .mobile-logo .logo-text {
+                font-size: 1.3rem;
+            }
+
+            .mobile-nav-link {
+                font-size: 1rem;
+                padding: 0.7rem 0.8rem;
+            }
+
+            .mobile-dropdown-toggle {
+                padding: 0.7rem 0.8rem;
+                font-size: 1rem;
+            }
+
+            .mobile-dropdown-item {
+                padding: 0.7rem 0.8rem;
+                font-size: 0.95rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Main Navigation (hidden in mobile) -->
     <nav class="navbar">
         <div class="logo">
             <a href="index.html">
@@ -695,6 +908,78 @@
             </button>
             <div class="menu-btn">
                 <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-navbar">
+        <div class="mobile-nav-header">
+            <div class="mobile-logo">
+                <a href="index.html">
+                    <span class="logo-text">Nexus</span>
+                    <span class="logo-text-highlight">Digital</span>
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-nav-menu">
+            <a href="index.html" class="mobile-nav-link">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+            <a href="about.html" class="mobile-nav-link">
+                <i class="fas fa-info-circle"></i>
+                About
+            </a>
+            <div class="mobile-dropdown">
+                <button class="mobile-dropdown-toggle">
+                    <i class="fas fa-cog"></i>
+                    Services
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="mobile-dropdown-menu">
+                    <a href="digital-strategy.html" class="mobile-dropdown-item active">
+                        <i class="fas fa-chart-line"></i>
+                        Digital Strategy
+                    </a>
+                    <a href="social-media-marketing.html" class="mobile-dropdown-item">
+                        <i class="fas fa-bullhorn"></i>
+                        Social Media Marketing
+                    </a>
+                    <a href="seo-optimization.html" class="mobile-dropdown-item">
+                        <i class="fas fa-search"></i>
+                        SEO Optimization
+                    </a>
+                    <a href="content-creation.html" class="mobile-dropdown-item">
+                        <i class="fas fa-paint-brush"></i>
+                        Content Creation
+                    </a>
+                    <a href="web-development.html" class="mobile-dropdown-item">
+                        <i class="fas fa-code"></i>
+                        Web Development
+                    </a>
+                </div>
+            </div>
+            <a href="portfolio.html" class="mobile-nav-link">
+                <i class="fas fa-briefcase"></i>
+                Portfolio
+            </a>
+            <a href="blog.html" class="mobile-nav-link">
+                <i class="fas fa-blog"></i>
+                Blog
+            </a>
+            <a href="contact.html" class="mobile-nav-link">
+                <i class="fas fa-envelope"></i>
+                Contact
+            </a>
+            <div class="mobile-nav-actions">
+                <button id="mobileDarkModeToggle" class="mobile-dark-mode-toggle">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -921,6 +1206,62 @@
                     );
                 }
             });
+        });
+
+        // Add mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Existing code...
+
+            // Mobile menu functionality
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileNavMenu = document.querySelector('.mobile-nav-menu');
+            const mobileDropdownToggle = document.querySelector('.mobile-dropdown-toggle');
+            const mobileDropdownMenu = document.querySelector('.mobile-dropdown-menu');
+            const mobileDarkModeToggle = document.getElementById('mobileDarkModeToggle');
+
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileNavMenu.classList.toggle('active');
+                mobileMenuToggle.querySelector('i').classList.toggle('fa-bars');
+                mobileMenuToggle.querySelector('i').classList.toggle('fa-times');
+            });
+
+            mobileDropdownToggle.addEventListener('click', () => {
+                mobileDropdownMenu.classList.toggle('active');
+                mobileDropdownToggle.querySelector('.fa-chevron-down').style.transform = 
+                    mobileDropdownMenu.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileNavMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                    mobileNavMenu.classList.remove('active');
+                    mobileMenuToggle.querySelector('i').classList.add('fa-bars');
+                    mobileMenuToggle.querySelector('i').classList.remove('fa-times');
+                    mobileDropdownMenu.classList.remove('active');
+                    mobileDropdownToggle.querySelector('.fa-chevron-down').style.transform = 'rotate(0)';
+                }
+            });
+
+            // Close mobile menu when window is resized above mobile breakpoint
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    mobileNavMenu.classList.remove('active');
+                    mobileMenuToggle.querySelector('i').classList.add('fa-bars');
+                    mobileMenuToggle.querySelector('i').classList.remove('fa-times');
+                    mobileDropdownMenu.classList.remove('active');
+                    mobileDropdownToggle.querySelector('.fa-chevron-down').style.transform = 'rotate(0)';
+                }
+            });
+
+            // Mobile dark mode toggle
+            if (mobileDarkModeToggle) {
+                mobileDarkModeToggle.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                });
+            }
         });
     </script>
 </body>
